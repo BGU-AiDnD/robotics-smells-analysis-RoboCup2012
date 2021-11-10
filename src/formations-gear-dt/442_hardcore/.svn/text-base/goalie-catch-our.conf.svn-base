@@ -1,0 +1,15 @@
+Formation Static
+# ---------------------------------------------------------
+# for free kick after our goalie catch
+ 1 Goalie         -49.0   0.0
+ 2 HCCenterBack  -29.5  -7.0
+ 3 HCCenterBack  -29.5   7.0
+ 4 HCSideBack    -29.5 -25.5
+ 5 HCSideBack    -29.5  25.5
+ 6 HCDefensiveHalf  -25.0 14.0
+ 7 HCDefensiveHalf  -25.0  -14.0
+ 8 HCOffensiveHalf    -19.0 26.0
+ 9 HCOffensiveHalf    -19.0  -26.0
+10 HCSideAttacker      -8.0 10.0
+11 HCSideAttacker      -8.0  -10.0
+# ---------------------------------------------------------

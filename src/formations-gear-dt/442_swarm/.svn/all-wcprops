@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm
+END
+before-kick-off.conf
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/before-kick-off.conf
+END
+setplay-opp-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/setplay-opp-formation.conf
+END
+indirect-freekick-opp-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/indirect-freekick-opp-formation.conf
+END
+goalie-catch-opp.conf
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/goalie-catch-opp.conf
+END
+goalie-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/goalie-formation.conf
+END
+goal-kick-opp.conf
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/goal-kick-opp.conf
+END
+setplay-our-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/setplay-our-formation.conf
+END
+indirect-freekick-our-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/indirect-freekick-our-formation.conf
+END
+offense-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/offense-formation.conf
+END
+goalie-catch-our.conf
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/goalie-catch-our.conf
+END
+goal-kick-our.conf
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/goal-kick-our.conf
+END
+normal-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/normal-formation.conf
+END
+defense-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/defense-formation.conf
+END
+kickin-our-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/442_swarm/kickin-our-formation.conf
+END

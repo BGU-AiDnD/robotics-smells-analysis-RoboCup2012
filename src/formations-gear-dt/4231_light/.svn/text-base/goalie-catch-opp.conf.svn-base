@@ -1,0 +1,15 @@
+Formation Static
+# ---------------------------------------------------------
+# for free kick after opponent goalie catch
+ 1 Goalie        -49.0   0.0
+ 2 LCenterBack      0.0  -8.0
+ 3 LCenterBack      0.0   8.0
+ 4 LSideBack        0.0 -18.0
+ 5 LSideBack        0.0  18.0
+ 6 LOffensiveHalf  12.0   0.0
+ 7 LDefensiveHalf  10.0  -8.0
+ 8 LDefensiveHalf  10.0   8.0
+ 9 LOffensiveHalf       16.0 -24.0
+10 LOffensiveHalf       16.0  24.0
+11 LAttacker  20.0   0.0
+# ---------------------------------------------------------

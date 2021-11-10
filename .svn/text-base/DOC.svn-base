@@ -1,0 +1,21 @@
+Modelagem arbitrária na implementação desse swarm. Apenas documentando o teste.
+
+swarm simples (mono-objetivo, sem restrições) implementado em cada jogador. Objetivo é maximizar o X.
+
+dividido em 3 vizinhanças:
+
+p2-p5 - neighborhood 1
+
+p5-p9 - neighborhood 2
+
+p9-p11 - neighborhood 3
+
+tanto p5 como p9 participam em mais de uma vizinhança, para haver troca de informação por todo o swarm, senão seriam 3 swarms independentes...
+
+as 3 vizinhanças são defesa (p2-p5), meio (p6-p9), e ataque (p10-p11). Dividido em vizinhanças, diminui-se o custo computacional, comparando esse mesmo swarm utilizando apenas 1 vizinhança, pois cada jogador tem q calcular o swarm da sua vizinhança (problema de implementação na 2D). 
+
+Esse swarm é apenas para testar se não estoura o tempo de cada ciclo.
+
+A chamada para cálculo do swarm está dentro do move de cada jogador (swarmUpdatePosition).
+
+Essa função, por sua vez inicializa 2 swarms diferentes, em função da posse de bola: se o próprio time possui a bola, swarm ofensivo é calculado. Se o time adversário possuir a bola, swarm defensivo é calculado. (TODO).

@@ -1,0 +1,15 @@
+Formation Static
+# ---------------------------------------------------------
+# for our goalie catch
+ 1 Goalie         -49.0   0.0
+ 2 HCCenterBack  -47.0  -4.0
+ 3 HCCenterBack  -47.0   4.0
+ 4 HCSideBack    -40.0 -20.0
+ 5 HCSideBack    -40.0  20.0
+ 6 HCDefensiveHalf  -32.0  8.0
+ 7 HCDefensiveHalf  -32.0  -8.0
+ 8 HCOffensiveHalf    -31.0 30.0
+ 9 HCOffensiveHalf    -31.0  -30.0
+10 HCSideAttacker     -13.0 10.0
+11 HCSideAttacker     -13.0  -10.0
+# ---------------------------------------------------------

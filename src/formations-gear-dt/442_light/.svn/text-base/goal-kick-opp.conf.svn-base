@@ -1,0 +1,15 @@
+Formation Static
+# ---------------------------------------------------------
+# for opponent goal kick
+ 1 Goalie         -49.0   0.0
+ 2 LCenterBack    0.0  -5.0
+ 3 LCenterBack    0.0   5.0
+ 4 LSideBack      0.0 -12.0
+ 5 LSideBack      0.0  12.0
+ 6 LDefensiveHalf   12.0 10.0
+ 7 LDefensiveHalf   12.0  -10.0
+ 8 LOffensiveHalf     25.0 24.0
+ 9 LOffensiveHalf     25.0  -24.0
+10 LSideAttacker      31.0  8.5
+11 LSideAttacker      31.0   -8.5
+# ---------------------------------------------------------

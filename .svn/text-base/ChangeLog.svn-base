@@ -1,0 +1,5355 @@
+2008-07-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_pass_kick_find_receiver.cpp:
+	- reverted to the previous version.
+
+	* src/bhv_side_back_defensive_move.cpp:
+	- tuned defense line x.
+
+	* src/role_side_forward.cpp:
+	- fixed a bug of the player pointer handling.
+
+	* src/bhv_self_pass.cpp:
+	- tuned the target area rectangle.
+
+	* src/bhv_side_back_defensive_move.cpp:
+	- added the trick to adjust to the defense line.
+
+	* src/bhv_mark_pass_line.cpp:
+	- tuned the mark target threshold.
+
+	* src/bhv_pass_kick_find_receiver.cpp:
+	- removed the count threshold check.
+
+	* src/role_defensive_half.cpp:
+	- disabled Bhv_DefensiveHalfDangerMove.
+
+	* src/role_side_forward.cpp:
+	- tuned the dribble condition.
+
+2008-07-19  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	- fixed a bug of ball chasing.
+	- tuned positioning mode swiching to prevent horizontal shoot.
+	- added definition OLD_GOAL_LINE_POSITINING_CONDITION to revert
+	positioning mode swiching.
+	- set compilation DISABLE_GOAL_LINE_POSITIONING_SHIFT_TO_SHOOT_POINT
+	to true.
+	- changed condition for chase ball.
+	- fixed penalty shoot out mode.
+
+2008-07-18  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_get_ball.cpp:
+	- fiexed a danger tackle condition.
+	- tuned a center position.
+
+	* src/bhv_pass_test.cpp:
+	- tuned pass evaluation.
+	- tuned ball step factor (1.05 -> 1.02).
+	- tuned dash distance buffers for through pass.
+
+	* src/bhv_side_back_danger_move.cpp:
+	* src/bhv_side_back_danger_move.h:
+	- added doBlockShoot()
+
+	* src/bhv_get_ball.cpp:
+	- tuned the cycle check condition.
+
+	* src/bhv_pass_test.cpp:
+	- reverted to the revision 520. tuned a through pass
+	check. tuned ball step factor (1.0 -> 1.05).
+
+	* src/bhv_defensive_half_danger_move.cpp:
+	* src/bhv_defensive_half_danger_move.h:
+	* src/Makefile.am:
+	* src/role_defensive_half.cpp:
+	- added Bhv_DefensiveHalfDangerMove.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_attacker_offensive_move.h:
+	* src/strategy.cpp:
+	* src/strategy.h:
+	- svn merge -r svn merge -r 594:597 ../../branches/helios-rc08-bs/
+	- implemented a very very simple starategy analysis.
+	- slightly changed the forward positioning for ManMark_Strategy.
+
+	* src/bhv_mark_pass_line.cpp:
+	- tuned a condition to check an another attacker.
+
+	* src/bhv_offensive_half_defensive_move.cpp
+	- tuned get ball condition.
+	- added intercept action for the get ball situation
+
+	* src/bhv_get_ball.cpp:
+	- tuned a conditin of the cycle check. reverted to the original condition.
+
+	* src/bhv_side_back_cross_block_move.cpp:
+	- fixed teammate interception info. goalie is excepted.
+
+	* src/bhv_side_back_danger_move.cpp:
+	- fixed teammate interception info. goalie is excepted.
+	- disabled Bhv_GoToPointLookBall
+
+2008-07-18  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior.cpp:
+	- disabled/enabled some features intended to stable behavior,
+	DISABLE_GOAL_LINE_POSITIONING_SHIFT_TO_SHOOT_POINT to false,
+	OLD_AGGRESSIVE_POSITIONING to true, OLD_EMERGENT_ADVANCE to true.
+
+	* src/bhv_savior.cpp:
+	- changed behavior of backing home from the mid field and added
+	compilation switch DISABLE_FAST_BACK_HOME.
+	- added compilation switches to revert each feature.
+	- added a compilation switch
+	DISABLE_GOAL_LINE_POSITIONING_SHIFT_TO_SHOOT_POINT to disable shifting
+	to shoot point, shifting is effective to opponent's fast passsing near
+	goal, but this feature has side effect, weak far corner shooting at
+	1 on 1.
+
+	* src/bhv_savior.cpp:
+	- added compile option GOAL_LINE_POSITIONINIG_FACE_BODY (default off).
+
+	* src/bhv_savior.cpp:
+	- replaced chase ball implementation.
+	- tuned condition for emergency advance mode.
+
+	* src/bhv_deflecting_tackle.cpp:
+	- modified target when ball is very close to the goal.
+
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	- added compiling switch OLD_STABLE in the src/bhv_savior.cpp
+	on the top of file. Enable this variable to revert to old behavior.
+	- improved tackle behavior, if one dash action increase tackle
+	probability, issue dash instead of tackle.
+	- modified emergency advance mode, when very dangerous situation,
+	do attacking. OLD_STABLE disables this modification.
+	- modified aggressive positioning, when we have advantage, go
+	to more forward position. OLD_STABLE disables this modification.
+	- changed goal line positioning, if opponent will be shootable, shift
+	positioning a little.
+
+	* src/bhv_deflecting_tackle.h:
+	* src/bhv_deflecting_tackle.cpp:
+	- tuned to choose more safety course.
+
+	* src/body_go_to_point2008.cpp:
+	- added debug message.
+
+	* src/bhv_savior.cpp:
+	- modified rule of positioning mode changing.
+
+2008-07-16  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	- improved moving on goal line positioning.
+
+	* src/body_go_to_point2008.h:
+	- fixed coding style.
+
+	* src/bhv_savior.cpp:
+	- changed chase ball condition not to chase
+	when possibily dangerous situation.
+	- changed log category from ACTION to TEAM.
+	- changed positioning error on goal line positioning mode.
+	- changed condition to do tune positioning or not.
+
+	* src/bhv_deflecting_tackle.h:
+	* src/bhv_deflecting_tackle.cpp:
+	- added default parameter.
+
+	* src/neck_chase_ball.cpp:
+	- added debug messages.
+
+2008-07-16  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_danger_area_tackle.cpp:
+	- disabled the last result cache.
+
+2008-07-15  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_deflecting_tackle.h:
+	* src/bhv_deflecting_tackle.cpp:
+	* src/Makefile.am:
+	* src/bhv_savior.cpp:
+	- added a new behavior deflecting tackle.
+
+	* src/bhv_savior_chase_ball.cpp:
+	- fixed a bug of chasing out of field ball.
+
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	- tuned mode swithing of positioning.
+	- fixed positioning bug occures when ball shall be over the goal line.
+	- dash power reduced when safety situation not to consume stamina.
+	- positioning target changed if angle error from goal is big.
+
+2008-07-15  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* ChangeLog:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_get_ball.cpp:
+	* src/bhv_offensive_half_defensive_move.cpp:
+	* src/bhv_side_back_cross_block_move.cpp:
+	* src/bhv_side_back_danger_move.cpp:
+	* src/bhv_side_back_danger_move.h:
+	* src/bhv_side_back_stopper_move.cpp:
+	* src/bhv_side_back_stopper_move.h:
+	* src/body_intercept2008.cpp:
+	* src/formations-433/defense-formation.conf:
+	* src/formations-433/defense-formation.dat:
+	* src/role_side_forward.cpp:
+	* src/strategy.cpp:
+	- reverted. svn merge -r 555:554 .
+
+	* src/helios_player.cpp:
+	- set ball velocity to 0 in the communication message if player
+	can kick the ball and will be kicable in next cycle.
+
+	* src/intention_dribble.cpp:
+	- added a playmode chedk for change_view action
+
+2008-07-15  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior_chase_ball.cpp:
+	- fixed a bug of chasing out of field ball.
+
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	- tuned mode swithing of positioning.
+	- fixed positioning bug occures when ball shall be over the goal line.
+	- dash power reduced when safety situation not to consume stamina.
+	- positioning target changed if angle error from goal is big.
+
+2008-07-14  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior.cpp:
+	- tuned mode swithing of positioning.
+
+	* src/bhv_savior_chase_ball.h:
+	* src/bhv_savior_chase_ball.cpp:
+	- changed neck action when doing interception.
+
+	* body_go_to_point2008.cpp:
+	- improved back dash.
+
+	* bhv_savior_goalie_basic_move.h:
+	* bhv_savior_goalie_basic_move.cpp:
+	* bhv_savior_chase_ball.cpp:
+	* Makefile.am:
+	- removed BhvSaviorGoalieBasicMove.
+
+2008-07-14  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_goalie_basic_move.cpp:
+	* src/bhv_goalie_basic_move.h:
+	- changed the ball looking policy if the current playmode is not
+	play_on or penalty_taken_[lr]. In these cases, goalie always uses
+	Body_GoToPoint instead of Bhv_GoToPointLookBall.
+
+2008-07-14  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/Makefile.am:
+	* src/bhv_goalie_basic_move.cpp:
+	* src/bhv_savior_chase_ball.cpp:
+	* src/bhv_savior_goalie_basic_move.cpp:
+	* src/bhv_savior.cpp:
+	- fixed a bug of positioning when ball shall be out of the field.
+
+	* src/bhv_savior_chase_ball.cpp:
+	- fixed a bug of positioning when ball shall be out of
+	the field. (but not all of cases)
+	- tuned positioning error parameter.
+
+	* src/bhv_savior.cpp:
+	- changed to do deflecting tackle when ball shall be in our goal.
+	- changed positioning.
+
+2008-07-14  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_dribble2008.cpp:
+	- restricted the playmode that change_view can be used.
+
+2008-07-13  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior.cpp:
+	- fixed kicking behavior at side of the field.
+	- changed to do force tackle when very dangerous situation.
+	- changed condition for emergency advance.
+
+	* src/bhv_savior_chase_ball.cpp:
+	- changed movement behavior from simple algorithm to Bhv_GoToPoint2008.
+
+	* src/body_go_to_point2008.h:
+	* src/body_go_to_point2008.cpp:
+	- added an option for emergency movement.
+
+	* src/pass_course_table.cpp:
+	* src/bhv_danger_area_tackle.cpp:
+	- fixed debug message.
+
+2008-07-13  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_get_ball.cpp:
+	- tuned the base center point to block the shoot.
+
+	* src/bhv_side_back_danger_move.cpp:
+	- added conditions to cancel the get ball action.
+
+	* src/bhv_get_ball.cpp:
+	- tuned a condition of the base center position to block the shoot
+	course.
+
+	* src/bhv_offensive_half_defensive_move.cpp:
+	* src/bhv_offensive_half_offensive_move.cpp:
+	* src/role_offensive_half.cpp:
+	- added simple stamina management for get ball action.
+	- fixed an illegal behavior assignment.
+
+	* src/mark_table.cpp:
+	- changed the x threshold policy.
+	- changed opponent max x threshold.
+
+	* src/defense_system.cpp:
+	* src/defense_system.h:
+	* src/Makefile.am:
+	* src/bhv_side_back_cross_block_move.cpp:
+	* src/bhv_side_back_cross_block_move.h:
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.h:
+	- added DefenseSystem to collect some utilities.
+	- tuned emergency move for side back.
+
+	* src/bhv_side_back_danger_move.cpp:
+	- fixed a condtion for block move.
+
+	* src/strategy.cpp:
+	- considered defense line to determine the defender's dash power
+
+	* src/bhv_offensive_half_defensive_move.cpp:
+	- added stamina check.
+
+2008-07-13  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_danger_area_tackle.cpp:
+	* src/bhv_basic_tackle.cpp:
+	- fixed does not tackle if ball shall be in the our goal.
+
+	* src/bhv_savior_chase_ball.cpp:
+	- fixed chasing to out of field problem.
+
+	* src/bhv_savior.cpp:
+	- modified debug message.
+
+2008-07-13  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_pass_test.cpp:
+	- tuned a through pass check. removed ball step factor (1.05 -> 1.0).
+
+2008-07-12  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/neck_check_ball_owner.cpp:
+	- fixed a turn neck target when opponent reach cycle is big.
+	- fixed a count threshold for ball check.
+
+	* src/bhv_pass_test.cpp:
+	- now, all pass lines are output as a debug line..
+	- disabled a large debug output.
+
+	* src/bhv_side_back_defensive_move.cpp:
+	- fixed a bounding region of the defensive area get ball action.
+
+	* src/bhv_goalie_free_kick.cpp:
+	- fixed a catch fault possibility after the successful catch.
+
+	* src/role_side_back.cpp:
+	- fixed a defect of the thost player check.
+
+	* src/formations-433/defense-formation.conf:
+	* src/formations-433/defense-formation.dat:
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned defender positions in the very dangerous situation.
+
+	* src/role_side_back.cpp:
+	- fixed a defect of the thost player check.
+
+	* src/bhv_center_back_danger_move.cpp:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_get_ball.cpp:
+	* src/bhv_offensive_half_defensive_move.cpp:
+	* src/bhv_offensive_half_defensive_move.h:
+	* src/bhv_offensive_half_offensive_move.cpp:
+	* src/bhv_offensive_half_offensive_move.h:
+	* src/bhv_side_back_cross_block_move.cpp:
+	* src/bhv_side_back_cross_block_move.h:
+	* src/bhv_side_back_danger_move.cpp:
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.h:
+	* src/bhv_side_back_stopper_move.cpp:
+	* src/bhv_side_back_stopper_move.h:
+	* src/role_offensive_half.cpp:
+	- first commit of the defense branch.
+
+2008-07-12  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	- added getCorrectedPredictBallPos() to calculate ball prediction
+	concern with outline of the field.
+	- used the ball prediction.
+
+2008-07-12  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_pass_test.cpp:
+	- changed the minimum through pass distance. (8.0 -> 5.5)
+
+	* src/bhv_dribble2008.cpp:
+	- fixed a defect of doTurnOnly()
+
+2008-07-12  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/body_advance_ball2008.cpp:
+	* src/body_advance_ball2008.h:
+	* src/Makefile.am:
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_basic_offensive_kick.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_forward.cpp:
+	* src/role_center_forward.cpp:
+	- removed Body_AdvanceBall2008.
+
+	* src/pass_course_table.h:
+	* src/pass_course_table.cpp:
+	- implemented shoot check. (not used)
+
+	* src/body_force_shoot.cpp:
+	- modified debug message.
+
+2008-07-12  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.h:
+	- cleaned up.
+	- added an emergency move action. need to do more test.
+
+	* src/bhv_center_back_danger_move.cpp:
+	- changed neck action sot Neck_CheckBallOwner.
+	- added the check of the fastest opponent.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- added a special move action to avoid offside.
+
+	* src/bhv_self_pass.cpp:
+	- incleased the minimum dash count threshold for KickTurnDashes
+	search.
+
+	* src/mark_table.cpp:
+	- added a test parameter.
+
+	* src/bhv_center_back_stopper_move.cpp:
+	* src/bhv_center_back_stopper_move.h:
+	- reimplemented Bhv_CenterBackStopperMove.
+
+	* src/bhv_pass_test.cpp:
+	* src/pass_course_table.cpp:
+	- fixed a defect of view range checking.
+
+2008-07-12  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/pass_course_table.cpp:
+	- inhibited pass to goalie over the defense line.
+
+2008-07-11  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_self_pass.cpp:
+	- fixed a bug of the turn margin check.
+	- changed the angle threshold polity.
+	- fixed debug messages.
+
+	* src/mark_table.cpp:
+	- fixed typo.
+
+	* src/bhv_mark_pass_line.cpp:
+	- added an action to check the unreliable mark target.
+
+	* src/neck_default_intercept_neck.cpp
+	- enabled turn_neck for the recursive pass in the offensive
+	situation.
+
+2008-07-11  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	- improved behavior when near ball holder exists.
+	- changed mode switching condition.
+
+2008-07-11  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_pass_kick_find_receiver.cpp:
+	* src/bhv_pass_test.cpp:
+	* src/pass_course_table.cpp:
+	- fixed a bug of the recursive pass verification.
+
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_center_back_defensive_move.h:
+	* src/bhv_side_back_defensive_move.cpp:
+	- cleaned up.
+	- tested our defense line consideration.
+
+2008-07-11  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/body_go_to_point2008.cpp:
+	- deleted unnecessary newline charactors in debugging message.
+
+	* src/bhv_savior_chase_ball.cpp:
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	- changed condition for interception.
+	- fixed a bug occures on right team penalty mode.
+
+2008-07-11  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_side_back_danger_move.cpp:
+	* src/bhv_side_back_danger_move.h:
+	* src/Makefile.am:
+	* src/role_side_back.cpp:
+	- added Bhv_SideBackDangerMove.
+
+	* src/bhv_defensive_half_defensive_move.cpp:
+	* src/bhv_defensive_half_defensive_move.h:
+	* src/Makefile.am:
+	* src/role_defensive_half.cpp:
+	- added Bhv_DefensiveHalfDefensiveMove.
+
+	* src/bhv_center_back_stopper_move.cpp:
+	* src/bhv_pass_kick_find_receiver.cpp:
+	- fixed debug messages.
+
+	* src/bhv_basic_tackle.cpp:
+	- added local static cache variables.
+
+	* src/bhv_cross.cpp:
+	* src/bhv_pass_test.cpp:
+	* src/bhv_savior.cpp
+	* src/bhv_their_goal_kick_move.cpp
+	* src/bhv_penalty_kick.cpp
+	* src/body_hold_ball2008.cpp
+	* src/body_kick_to_front_space.cpp
+	* src/kick_table.cpp
+	* src/role_center_forward.cpp:
+	* src/role_goalie.cpp:
+	* src/role_side_forward.cpp:
+	* src/body_dribble2008.cpp:
+	* src/shoot_table2008.cpp:
+	- changed Rect2D constructors.
+
+2008-07-11  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior_chase_ball.cpp:
+	- changed condition for interception.
+
+2008-07-11  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_center_back_danger_move.cpp:
+	* src/bhv_center_back_danger_move.h:
+	* src/Makefile.am:
+	* src/role_center_back.cpp:
+	- added Bhv_CenterBackDangerMove.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- changed the other player's minimaum intercept step value for turn_neck
+
+	* src/neck_default_intercept_neck.cpp:
+	- changed the policy for recursive pass.
+
+	* src/bhv_pre_process.cpp:
+	- set force mode to the simultaneous kick.
+
+	* src/pass_course_table.cpp:
+	- tested a ball first speed for recursive pass.
+
+	* src/bhv_side_back_defensive_move.cpp:
+	- changed a get ball condition.
+
+	* src/bhv_center_back_defensive_move.cpp:
+	- tuned a bounding rectangle for the get ball action
+
+	* src/bhv_defender_basic_block_move.cpp:
+	* src/bhv_defender_basic_block_move.h:
+	- removed static methods and replaced them with the static methods
+	in Strategy class.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- set a ball count threshold for Neck_TurnToBallOrScan
+
+	* src/bhv_side_back_stopper_move.cpp:
+	* src/bhv_side_back_stopper_move.h:
+	* src/Makefile.am:
+	* src/role_side_back.cpp:
+	- added Bhv_SideBackStopperMove
+
+	* src/helios_player.cpp:
+	* src/strategy.cpp:
+	- added a home position mark to the debug message.
+
+	* src/bhv_savior_chase_ball.cpp:
+	* src/bhv_savior_chase_ball.h:
+	* src/Makefile.am:
+	* src/bhv_savior.cpp:
+	- added Bhv_SaviorChaseBall.
+	- added a kickable player status for the catchable check.
+	- added more detailed debug messages.
+
+2008-07-11  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior.cpp:
+	* src/bhv_savior_chase_ball.cpp:
+	- changed some conditions and parameters.
+
+2008-07-10  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/neck_offensive_intercept_neck.cpp:
+	* src/neck_offensive_intercept_neck.h:
+	* src/Makefile.am:
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_basic_move.cpp:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_center_back_stopper_move.cpp:
+	* src/bhv_defender_get_ball.cpp:
+	* src/bhv_find_player.cpp:
+	* src/bhv_find_player.h:
+	* src/bhv_mark_close_opponent.cpp:
+	* src/bhv_offensive_half_defensive_move.cpp:
+	* src/bhv_offensive_half_offensive_move.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/body_intercept2008.cpp:
+	* src/intention_receive.cpp:
+	* src/neck_check_ball_owner.cpp:
+	* src/neck_default_intercept_neck.cpp:
+	* src/neck_default_intercept_neck.h:
+	* src/role_center_back.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_back.cpp:
+	* src/role_side_forward.cpp:
+	- added Neck_OffensiveInterceptNeck.
+
+	* src/bhv_pass_kick_find_receiver.cpp:
+	- changed the best target selecton policy.
+
+	* src/bhv_pass_test.cpp:
+	* src/bhv_pass_test.h:
+	* src/pass_course_table.cpp:
+	* src/pass_course_table.h:
+	* src/world_model_ext.h:
+	- fixed a critical bug in the getDistPlayerNearestToPoint().
+	- added the check of one step kick possibility when the recursive
+	kick is registered.
+	- changed the policy of the recursive pass type. Now, the result
+	pass type is affected by one step kick possibility and player's
+	view range.
+
+	* src/bhv_get_ball.cpp:
+	* src/bhv_get_ball.h:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_defender_get_ball.cpp:
+	* src/bhv_offensive_half_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.cpp:
+	- added a bounding rectangle variable to Bhv_GetBall.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_basic_move.cpp:
+	* src/bhv_block_ball_kicker.cpp:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_center_back_stopper_move.cpp:
+	* src/bhv_defender_get_ball.cpp:
+	* src/bhv_mark_close_opponent.cpp:
+	* src/bhv_offensive_half_defensive_move.cpp:
+	* src/bhv_offensive_half_offensive_move.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/bhv_press.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_shake_off_mark.cpp:
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/intention_receive.cpp:
+	* src/neck_default_intercept_neck.h:
+	* src/role_center_back.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_back.cpp:
+	* src/role_side_forward.cpp:
+	- added NO_USE_NECK_DEFAULT_INTERCEPT_NECK macro.
+
+	* src/bhv_block_ball_owner.cpp:
+	* src/bhv_block_ball_owner.h:
+	* src/bhv_block_side_attack.cpp:
+	* src/bhv_block_side_attack.h:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_center_back_defensive_move.h:
+	* src/bhv_center_back_stopper_move.cpp:
+	* src/bhv_center_back_stopper_move.h:
+	* src/bhv_get_ball.cpp:
+	* src/bhv_get_ball.h:
+	* src/bhv_line_defense.cpp:
+	* src/bhv_line_defense.h:
+	* src/bhv_mark_pass_line.cpp:
+	* src/bhv_mark_pass_line.h:
+	* src/bhv_offensive_half_defensive_move.cpp:
+	* src/bhv_offensive_half_defensive_move.h:
+	* src/bhv_offensive_half_offensive_move.cpp:
+	* src/bhv_offensive_half_offensive_move.h:
+	* src/bhv_side_back_cross_block_move.cpp:
+	* src/bhv_side_back_cross_block_move.h:
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.h:
+	* src/neck_check_ball_owner.cpp:
+	* src/neck_check_ball_owner.h:
+	* src/bhv_attacker_offensive_move2006.cpp:
+	* src/bhv_attacker_offensive_move2007.cpp:
+	* src/bhv_goalie_basic_move2006.cpp:
+	* src/bhv_goalie_basic_move2006.h:
+	* src/Makefile.am:
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_defender_get_ball.cpp:
+	* src/body_clear_ball2008.cpp:
+	* src/mark_table.cpp:
+	* src/pass_course_table.cpp:
+	* src/player.conf:
+	* src/role_center_back.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_offensive_half.h:
+	* src/role_side_back.cpp:
+	* src/strategy.cpp:
+	* src/strategy.h:
+	- merged helios-rc08-GetBall branche -r 410:470
+	- some conflicts are manually resoluved.
+
+	* src/neck_turn_to_receiver.cpp:
+	- changed the face target point.
+
+	* src/bhv_pass_test.cpp:
+	- changed the condition of the find receiver action.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_basic_move.cpp:
+	* src/bhv_block_ball_kicker.cpp:
+	* src/bhv_defender_get_ball.cpp:
+	* src/bhv_mark_close_opponent.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/bhv_press.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_shake_off_mark.cpp:
+	* src/intention_receive.cpp:
+	* src/role_center_back.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_back.cpp:
+	* src/role_side_forward.cpp:
+	- set sub actions to Neck_DefaultInterceptNeck.
+
+	* src/neck_default_intercept_neck.cpp:
+	* src/neck_default_intercept_neck.h:
+	- supported subaction The other ViewAction and NeckAction can be
+	set as sub actions.
+
+	* src/bhv_pass_kick_find_receiver.cpp:
+	* src/bhv_pass_kick_find_receiver.h:
+	* src/Makefile.am:
+	* src/bhv_pass_test.cpp:
+	* src/pass_course_table.cpp:
+	- enabled a direct pass search.
+	- added Bhv_PassKickFindReceiver.
+	- changed the receiver position count threshold in PassCourseTable.
+
+2008-07-09  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/team_logo.xpm:
+	- fixed compilation warnings by adding const.
+
+2008-07-09  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_find_player.cpp:
+	- fixed a search range.
+
+	* src/bhv_mark_close_opponent.cpp:
+	* src/bhv_press.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_shake_off_mark.cpp:
+	* src/intention_receive.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	- replaced neck action with Neck_DefaultInterceptNeck.
+
+	* src/neck_default_intercept_neck.cpp:
+	* src/neck_default_intercept_neck.h:
+	- totally reimplemented.
+	- TODO: ViewAction and NeckAction member variables to be used as
+	the default action.
+
+	* src/bhv_find_player.cpp:
+	- reimplemented the body target point search algorithm.
+
+	* src/neck_turn_to_receiver.cpp:
+	- reverted to the jo2008 version.
+
+	* src/bhv_danger_area_tackle.cpp:
+	- added time variable to avoid same calculation in the same cycle.
+
+2008-07-09  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_defender_get_ball.cpp:
+	- enabled Bhv_GetBall.
+
+	* src/body_clear_ball2008.cpp:
+	- added a profiling code.
+
+	* src/bhv_get_ball.cpp:
+	* src/bhv_get_ball.h:
+	- reimplemented the search policy.
+
+	* src/bhv_find_player.cpp:
+	* src/bhv_mark_pass_line.cpp:
+	* src/bhv_pass_test.cpp:
+	* src/bhv_savior.cpp:
+	- merged with the pass branche rev. 460
+
+2008-07-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_offensive_half_defensive_move.cpp:
+	* src/bhv_offensive_half_defensive_move.h:
+	* src/bhv_offensive_half_offensive_move.cpp:
+	* src/bhv_offensive_half_offensive_move.h:
+	* src/Makefile.am:
+	* src/role_offensive_half.cpp:
+	* src/role_offensive_half.h:
+	- added Bhv_OffensiveHalfOffensiveMove and
+	- Bhv_OffensiveHalfDefensiveMove.
+
+	* src/bhv_get_ball.cpp:
+	- tuned opponent cycle buffer.
+
+	* src/bhv_pass_test.cpp:
+	* src/pass_course_table.cpp:
+	* src/bhv_find_player.cpp:
+	- tested another parameters.
+
+	* src/mark_table.cpp:
+	- considered a defense line value.
+
+	* src/strategy.cpp:
+	- considered a defense line value and a home position.
+
+	* src/bhv_danger_area_tackle.cpp:
+	- added time variable to avoid same calculation in the same cycle.
+
+	* src/bhv_get_ball.cpp:
+	- tuned a center position for Bhv_GetBall
+
+	* src/bhv_side_back_cross_block_move.cpp:
+	- cleaned up.
+	- need to reipmlement the target point calculation.
+
+	* src/neck_check_ball_owner.cpp:
+	- fixed debug messages
+	- fixed the initiali value in view width iterations.
+
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.h:
+	- fixed a GetBall rule for defensive move.
+
+	* src/bhv_block_ball_owner.cpp:
+	* src/bhv_block_ball_owner.h:
+	* src/bhv_block_side_attack.h:
+	* src/bhv_pass_test.cpp:
+	* src/role_offensive_half.cpp:
+	* src/world_model_ext.h:
+	- reimplemented Bhv_BlockBallOwner.
+	- enabled USE_OFFENSIVE_MOVE_2008 in RoleOffensiveHalf
+
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_defender_get_ball.cpp:
+	* src/bhv_get_ball.cpp:
+	* src/bhv_get_ball.h:
+	* src/bhv_pass_test.cpp:
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/neck_check_ball_owner.h:
+	* src/role_offensive_half.cpp:
+	* src/strategy.cpp:
+	- enabled Strategy::get_defense_line_x()
+	- disabled USE_OFFENSIVE_MOVE_2008
+
+2008-07-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/world_model_ext.h:
+	- fixed a bug of the player validation check.
+
+	* src/neck_chase_ball.cpp:
+	- fixed debug messages.
+
+	* src/bhv_basic_defensive_kick.cpp:
+	- disabled final pass.
+
+2008-07-08  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_pass_test.cpp:
+	- changed recursive pass speed.
+
+	* src/neck_turn_to_receiver.cpp:
+	- added missing change view code.
+
+	* src/bhv_find_player.cpp:
+	- fixed a bug, doesn't turn body to goal.
+
+	* src/Makefile.am:
+	* src/neck_default_intercept_neck.cpp:
+	* src/neck_default_intercept_neck.h:
+	- added a new neck action to handle neck when doing interception.
+
+	* src/bhv_basic_move.cpp:
+	* src/bhv_defender_get_ball.cpp:
+	* src/bhv_block_ball_kicker.cpp:
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	- replaced neck action when doing interception
+	to Neck_DefaultInterceptNeck.
+
+	* src/neck_turn_to_receiver.h:
+	* src/neck_turn_to_receiver.cpp:
+	- changed to use non-kickable player.
+
+	* src/bhv_savior.cpp:
+	- changed positioning aggresive a little.
+
+	* src/pass_course_table.cpp:
+	- added ghost player check.
+
+	* src/bhv_pass_test.cpp:
+	- disabled PassTest direct pass.
+	- restricted pass speed of recursive pass.
+
+	* src/bhv_find_player.cpp:
+	- changed body direction to face to opponent goal if possible.
+
+	* src/bhv_basic_defensive_kick.cpp:
+	- reverted hold, clear, advance ball actions.
+
+2008-07-07  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.h:
+	* src/role_offensive_half.cpp:
+	- replaced a turn_neck action with Neck_CheckBallOwner.
+
+	* src/neck_check_ball_owner.cpp:
+	* src/neck_check_ball_owner.h:
+	* src/Makefile.am:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_center_back_defensive_move.h:
+	* src/bhv_get_ball.cpp:
+	* src/neck_chase_ball.cpp:
+	- added Neck_CheckBallOwner.
+
+	* src/bhv_block_ball_owner.cpp:
+	* src/bhv_block_ball_owner.h:
+	* src/bhv_side_back_cross_block_move.cpp:
+	* src/bhv_side_back_cross_block_move.h:
+	* src/bhv_attacker_offensive_move2006.cpp:
+	* src/bhv_attacker_offensive_move2007.cpp:
+	* src/bhv_goalie_basic_move2006.cpp:
+	* src/bhv_goalie_basic_move2006.h:
+	* src/Makefile.am:
+	* src/bhv_block_side_attack.cpp:
+	* src/bhv_block_side_attack.h:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_center_back_defensive_move.h:
+	* src/bhv_center_back_stopper_move.cpp:
+	* src/bhv_center_back_stopper_move.h:
+	* src/bhv_get_ball.h:
+	* src/bhv_line_defense.h:
+	* src/bhv_mark_pass_line.h:
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.h:
+	* src/role_center_back.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_offensive_half.h:
+	* src/role_side_back.cpp:
+	- added Bhv_SideBackCrossBlockMove.
+	- added Bhv_BlockBallOwner.
+	- started to reimplement the defense strategy.
+
+2008-07-07  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_danger_area_tackle.cpp:
+	- changed not to skip tackling when intercept point is back of
+	our goal line.
+
+	* src/bhv_basic_defensive_kick.cpp:
+	- changed hold ball to pass.
+
+	* src/neck_chase_ball.cpp:
+	- fixed bugs concern with view width handling.
+
+	* src/bhv_pass_test.cpp:
+	- inhibit push action of PassCourseTable.
+
+	* src/bhv_savior.cpp:
+	* src/bhv_savior.h:
+	- changed kick to use clear ball instead of pass at side of field
+	if pass receiver is not in side field.
+
+2008-07-06  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_pass_test.h:
+	* src/bhv_pass_test.cpp:
+	* src/pass_course_table.h:
+	* src/pass_course_table.cpp:
+	* src/neck_turn_to_receiver.cpp:
+	* src/bhv_savior.cpp:
+	- merged recursive pass to Bhv_PassTest/get_best_pass() mechanism.
+	- changed some argument of methods in PassCourseTable PlayerAgent
+	to WorldModel.
+
+	* src/pass_course_table.cpp:
+	* src/bhv_pass_test.cpp:
+	- changed to do check before pass.
+
+	* src/bhv_savior.cpp:
+	- changed positioning to more closer to goal line.
+	- changed tackle probability.
+
+2008-07-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_side_back_defensive_move.cpp:
+	* src/bhv_side_back_defensive_move.h:
+	* src/Makefile.am:
+	* src/bhv_line_defense.cpp:
+	* src/role_side_back.cpp:
+	* src/strategy.cpp:
+	- added Bhv_SideBackDefensiveMove.
+	- added debug messages to check the current ball area.
+
+2008-07-05  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_pass_test.h:
+	* src/bhv_pass_test.cpp:
+	* src/pass_course_table.cpp:
+	- changed direct pass to use recursive pass search.
+	- disabled lead pass in bhv_pass_test.
+
+2008-07-04  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_mark_pass_line.cpp:
+	* src/bhv_mark_pass_line.h:
+	* src/Makefile.am:
+	* src/mark_table.cpp:
+	* src/role_side_back.cpp:
+	* src/strategy.h:
+	- added Bhv_MarkPassLine.
+	- added Starategy::markTable() to refer the result of mark
+	analysis.
+
+	* src/bhv_center_back_stopper_move.cpp:
+	* src/bhv_center_back_stopper_move.h:
+	* src/Makefile.am:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_get_ball.cpp:
+	* src/bhv_line_defense.cpp:
+	* src/player.conf:
+	* src/role_center_back.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_back.cpp:
+	- added Bhv_CenterBackStopperMove.
+	- tuned defense lines.
+	- added 'debug_block' and 'debug_mark' options.
+
+	* src/bhv_pre_process.cpp:
+	- added an intention reset code just after shoot behavior.
+
+	* src/role_offensive_half.cpp:
+	* src/role_offensive_half.h:
+	- tuned the conditions for the press action.
+
+	* src/bhv_block_side_attack.cpp:
+	* src/bhv_block_side_attack.h:
+	* src/bhv_center_back_defensive_move.cpp:
+	* src/bhv_center_back_defensive_move.h:
+	* src/Makefile.am:
+	* src/bhv_defender_get_ball.cpp:
+	* src/bhv_get_ball.h:
+	* src/bhv_line_defense.cpp:
+	* src/bhv_line_defense.h:
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	- separated the implementation for test.
+
+2008-07-04  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/body_pass_test.h:
+	* src/body_pass_test.cpp:
+	* src/bhv_pass_test.h:
+	* src/bhv_pass_test.cpp:
+	* src/neck_turn_to_receiver.cpp:
+	* src/bhv_basic_offensive_kick.cpp:
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_keep_shoot_chance.cpp:
+	* src/bhv_set_play_free_kick.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_set_play_indirect_free_kick.cpp:
+	* src/bhv_goalie_free_kick.cpp:
+	* src/bhv_savior.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	* src/role_sample.cpp:
+	* src/Makefile.am:
+	- changed type of PassTest from body action to behavior.
+	- replaced a set of Body_PassTest and Neck_TurnToReceiver
+	to Bhv_PassTest.
+
+2008-07-04  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_penalty_kick.cpp:
+	* src/bhv_savior.cpp:
+	- merged savior penalty shoot outs.
+
+2008-07-04  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_shoot2008.cpp:
+	* src/bhv_shoot2008.h:
+	* src/body_shoot2008.cpp:
+	* src/body_shoot2008.h:
+	* src/Makefile.am:
+	* src/bhv_pre_process.cpp:
+	* src/body_force_shoot.cpp:
+	* src/pass_course_table.cpp:
+	* src/shoot_table2008.h:
+	- renamed Body_Shoot2008 to Bhv_Shoot2008.
+
+	* src/bhv_pre_process.cpp:
+	- added an intention reset code just after shoot behavior.
+
+	* src/player.conf:
+	- added debug_hold
+
+2008-07-04  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/start.sh.in:
+	- added --log-dir DIRECTORY, --log-ext EXTENSION option.
+
+2008-07-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_get_ball.cpp:
+	* src/bhv_get_ball.h:
+	* src/bhv_line_defense.cpp:
+	* src/bhv_line_defense.h:
+	* src/Makefile.am:
+	* src/bhv_defender_get_ball.cpp:
+	* src/role_center_back.cpp:
+	- added Bhv_GetBall, not completed yet.
+	- added Bhv_LineDefense, not completed yet.
+
+2008-07-03  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/start.sh.in:
+	- added --debug-server-host HOST, --debug-server-port PORT option.
+
+2008-07-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/home_positions.cpp:
+	* src/home_positions.h:
+	* src/Makefile.am:
+	* src/bhv_block_dribble.cpp:
+	- removed home_positions.{h,cpp}
+
+	* src/start.sh.in:
+	- added --savior (on|off) option.
+
+	* src/helios_player.cpp:
+	* src/kick_table.cpp:
+	* src/player.conf:
+	* src/role_goalie.cpp:
+	* src/strategy.cpp:
+	* src/strategy.h:
+	- added a new command line option, '--savior' to switch the
+	goalie's behavior.
+	- restraineted warning messages.
+
+2008-07-03  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/body_pass_test.cpp:
+	- added debug information.
+
+	* src/start.sh.in:
+	- added -p|--port PORT, -P|--coach-port PORT option.
+
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	- changed positioning backward.
+	- changed some parameters.
+
+2008-07-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_pass_test.cpp:
+	- tuned the evaluation rule for the ball first speed.
+
+	* src/body_shoot2008.h:
+	- removed const from returned value.
+
+	* src/bhv_block_dribble.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/body_dribble2008.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	- renamed PlayerType::predictStamina*()
+
+2008-07-03  Hiroki Shimora  <shimora@users.sourceforge.net>
+
+	* src/bhv_savior.h:
+	* src/bhv_savior.cpp:
+	* src/role_goalie.cpp:
+	* src/pass_course_table.h:
+	* src/pass_course_table.cpp:
+	* src/body_go_to_point2008.h:
+	* src/body_go_to_point2008.cpp:
+	* src/neck_chase_ball.h:
+	* src/neck_chase_ball.cpp:
+	* src/bhv_find_ball.h:
+	* src/bhv_find_ball.cpp:
+	* src/bhv_find_player.h:
+	* src/bhv_find_player.cpp:
+	* src/body_force_shoot.h:
+	* src/body_force_shoot.cpp:
+	* src/world_model_ext.h:
+	* src/Makefile.am:
+	- merged goalie code from helios2/.
+
+	* AUTHORS:
+	- added a developper.
+
+	* src/body_dribble2008.cpp:
+	* src/helios_coach.cpp:
+	- fixed compilation probrem with gcc 4.2.
+
+2008-07-02  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_basic_offensive_kick.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	* src/body_advance_ball2008.cpp:
+	* src/body_advance_ball_test.cpp:
+	* src/body_advance_ball_test.h:
+	* src/body_pass_test.cpp:
+	* src/role_center_back.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_back.cpp:
+	* src/role_side_forward.cpp:
+	- diabled Body_AdvanceBall2008.
+
+	* src/body_pass_test.cpp:
+	- tuned the evaluation rule. added the ball speed checking.
+
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/body_advance_ball2008.cpp:
+	* src/body_clear_ball2008.cpp:
+	- tuned the search range of Body_AdvanceBall2008.
+	- added debug message.
+	- fixed a defect of multi-step clear kick.
+
+	* src/formations-433/offense-formation.conf:
+	* src/formations-433/offense-formation.dat:
+	* src/Makefile.am:
+	* src/role_offensive_half.cpp:
+	* src/strategy.cpp:
+	* src/strategy.h:
+	- added offense-formation.conf
+	- fixed an illegal condition for RoleOffensiveHalf's press
+	behavior.
+
+	* src/formations-433/defense-formation.conf:
+	* src/formations-433/defense-formation.dat:
+	* src/Makefile.am:
+	* src/role_center_back.cpp:
+	* src/strategy.cpp:
+	* src/strategy.h:
+	- added defense-formation.conf
+	- added a simple situation judgement.
+	- enabledd Stopper zone positioning in RoleCenterBack.
+
+	* src/mark_table.cpp:
+	* src/mark_table.h:
+	- reimplemented mark target selection algorithm.
+
+	* src/mark_table.h:
+	* src/Makefile.am:
+	* src/strategy.cpp:
+	* src/strategy.h:
+	- copied MarkTable from helios2.
+
+	* src/body_advance_ball2008.cpp:
+	* src/body_advance_ball2008.h:
+	* src/body_clear_ball2008.cpp:
+	* src/body_clear_ball2008.h:
+	* src/bhv_goalie_basic_move2007.cpp:
+	* src/bhv_goalie_basic_move2007.h:
+	* src/Makefile.am:
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_basic_offensive_kick.cpp:
+	* src/bhv_block_dribble.cpp:
+	* src/bhv_goalie_free_kick.cpp:
+	* src/bhv_penalty_kick.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	* src/intercept_simulator.cpp:
+	* src/intercept_simulator.h:
+	* src/role_center_back.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_goalie.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_back.cpp:
+	* src/role_side_forward.cpp:
+	- merged wigh helios2.
+	- added PlayerEvaluator, Body_AdvanceBall2008 and
+	Body_ClearBall2008
+
+	* src/bhv_cross.cpp:
+	* src/bhv_cross.h:
+	* src/bhv_cross_to_center.cpp:
+	* src/bhv_cross_to_center.h:
+	* src/Makefile.am:
+	* src/bhv_goalie_basic_move.h:
+	* src/bhv_keep_shoot_chance.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/bhv_pre_process.h:
+	* src/formations-433/before-kick-off.conf:
+	* src/formations-433/goal-kick-opp.conf:
+	* src/formations-433/goal-kick-our.conf:
+	* src/formations-433/goalie-catch-opp.conf:
+	* src/formations-433/goalie-catch-our.conf:
+	* src/helios_player.cpp:
+	* src/helios_player.h:
+	* src/role_center_back.cpp:
+	* src/role_center_back.h:
+	* src/role_center_forward.cpp:
+	* src/role_center_forward.h:
+	* src/role_defensive_half.cpp:
+	* src/role_defensive_half.h:
+	* src/role_goalie.cpp:
+	* src/role_goalie.h:
+	* src/role_offensive_half.cpp:
+	* src/role_offensive_half.h:
+	* src/role_sample.h:
+	* src/role_side_back.cpp:
+	* src/role_side_back.h:
+	* src/role_side_forward.cpp:
+	* src/role_side_forward.h:
+	* src/soccer_role.h:
+	* src/strategy.cpp:
+	* src/strategy.h:
+	- merged with helios2.
+
+2008-06-30  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/Makefile.am:
+	* src/bhv_basic_move.cpp:
+	* src/bhv_goalie_free_kick.cpp:
+	* src/bhv_penalty_kick.cpp:
+	* src/body_dribble2008.cpp:
+	* src/body_hold_ball2008.h:
+	* src/body_pass_test.cpp:
+	* src/body_shoot2008.h:
+	* src/kick_table.cpp:
+	* src/role_center_back.cpp:
+	* src/role_offensive_half.cpp:
+	* src/shoot_table2008.cpp:
+	- fixed compiler warnings.
+
+2008-06-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- added self stamina consideration.
+
+	* src/bhv_basic_defensive_kick.cpp:
+	- tuned dribble dash power.
+
+	* src/bhv_basic_offensive_kick.cpp:
+	- added new pass condition.
+
+	* src/bhv_self_pass.cpp:
+	- change the y target generation algorithm.
+
+	* src/body_dribble2008.cpp:
+	- tuned opponent check algorithm.
+
+	* src/body_hold_ball2008.cpp:
+	- tuned evaluation function. Checked more ditained opponent
+	distance.
+
+	* src/body_intercept2008.cpp:
+	- tuned a wait position for a near interception.
+
+	* src/kick_table.cpp:
+	- tuned evaluation function. decreased the effect of kick power.
+
+	* src/role_side_forward.cpp:
+	- tuned opponent intercept buffer.
+
+2008-05-23  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- tuned an opponent avoidance position.
+	- tuned a back dash condition.
+
+	* src/bhv_basic_offensive_kick.cpp:
+	- fixed a bug of hold ball condition.
+
+	* src/bhv_goalie_basic_move.cpp:
+	- fixed a bug of deep cross condition.
+
+	* src/body_dribble2008.cpp:
+	- added the check of out of pitch condition
+
+	* src/body_intercept2008.cpp:
+	- tuned the fastest interception condition.
+	- tuned the wait position.
+
+	* src/body_pass_test.cpp:
+	- added the ghost and tackling player checking.
+
+	* src/role_center_forward.cpp:
+	- tuned the condition for the shoot chance area pass.
+
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	- tuned the condition for opponent blocking.
+
+	* src/role_side_forward.cpp:
+	- removed old tackle code.
+	- tuned the condition for interception.
+
+2008-05-22  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_dribble2008.cpp:
+	- fixed a debug meessage.
+
+	* src/body_hold_ball2008.cpp:
+	- fixed a bug of the rverse hold
+	- added middle range target points
+	- tuned a kickable buffer
+
+	* src/body_intercept2008.cpp:
+	- tuned the fasterst interrception rule.
+
+	* src/body_pass_test.cpp:
+	- tuned through pass parameters.
+
+	* src/bhv_self_pass.cpp:
+	- changed target point search order.
+
+	* src/role_side_forward.cpp:
+	- tuned a kick behavior in the shoot chance area.
+
+2008-05-21  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_defender_basic_block_move.cpp:
+	* src/bhv_goalie_chase_ball.cpp:
+	* src/bhv_mark_close_opponent.cpp:
+	* src/bhv_penalty_kick.cpp:
+	* src/role_center_back.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_sample.cpp:
+	* src/role_side_back.cpp:
+	* src/role_side_forward.cpp:
+	- replaced isSelfFastestPlayer() and isOurTeamBallPossessor().
+
+	* src/bhv_self_pass.cpp:
+	* src/bhv_self_pass.h:
+	- implemented new search algorithm to execute 1 turn & dashes.
+
+	* src/role_offensive_half.cpp:
+	- changed a behavior for the cross area kick.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- added back dash rule.
+
+	* src/bhv_keep_shoot_chance.cpp:
+	- replaced one KickToCorner with HoldBall.
+
+	* src/bhv_self_pass.cpp:
+	* src/bhv_self_pass.h:
+	- prepared the turn prediction code, but not used yet.
+
+	* src/body_dribble2008.cpp:
+	- tuned opponent count threshold.
+
+	* src/body_hold_ball2008.cpp:
+	- tuned kick noise buffer.
+
+	* src/body_intercept2008.cpp:
+	- tuned wait dash position.
+
+	* src/helios_player.cpp:
+	- added a simple restriction rule for the self message.
+
+2008-05-20  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_self_pass.cpp:
+	* src/body_dribble2008.cpp:
+	- tuned opponent interfere checking.
+
+	* src/kick_table.cpp:
+	* src/kick_table.h:
+	- added evaluation rule for the miss kick possibility.
+
+	* src/formations-433/before-kick-off.conf:
+	- tuned center forward initial position.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- tuned dash power.
+
+	* src/bhv_basic_offensive_kick.cpp:
+	- changed the ball handling policy when no plan.
+
+	* src/bhv_self_pass.cpp:
+	- added the check of ball position to finished().
+
+	* src/bhv_set_play_kick_off.cpp:
+	- fixed ball speed.
+
+	* src/shoot_table2008.cpp:
+	- tuned field player predictor.
+
+2008-05-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/Makefile.am:
+	* src/intercept_simulator.cpp:
+	* src/intercept_simulator.h:
+	- copied from helios2 in order to test the simulator.
+
+	* src/bhv_goalie_basic_move.cpp:
+	- fixed positioning rule.
+
+	* src/bhv_self_pass.cpp:
+	- fixed opponent angle.
+
+	* src/body_dribble2008.cpp:
+	- reverted to the old evaluation rule in the keep dribble.
+	- implemented a strict opponent checking for kick-turns-dashes.
+
+	* src/body_pass_test.cpp:
+	- tuned dash step buffer for through pass.
+
+	* src/helios_coach.cpp:
+	- fixed player speed compare functor.
+
+	* src/shoot_table2008.cpp:
+	* src/shoot_table2008.h:
+	- implemented strict field player predictor.
+
+	* src/kick_table.cpp:
+	- reverted to the version of no strict kick noise checking
+
+	* src/bhv_goalie_basic_move.cpp:
+	- tuned the condition to change the goalie's body direction.
+
+	* src/kick_table.cpp:
+	* src/kick_table.h:
+	- added a strict kick noise checking.
+
+	* src/body_dribble2008.cpp:
+	- tuned keep dribble simulator.
+
+	* src/bhv_self_pass.cpp:
+	- added counter variable to check the kickable state.
+
+	* src/role_center_forward.cpp:
+	- added self pass rule in the dribble attack area.
+
+	* src/role_side_back.cpp:
+	- disabled special cross block movement
+
+2008-05-18  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/role_center_back.cpp:
+	* src/role_side_forward.cpp:
+	- cleaned up turn neck and change view actions.
+
+	* src/role_defensive_half.cpp:
+	- tuned dribble block condition.
+
+	* src/body_hold_ball2008.cpp:
+	- tuned front keep distance.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- added pointto off action.
+
+	* src/bhv_basic_tackle.cpp:
+	- tuned tackle condition
+
+	* src/bhv_self_pass.cpp:
+	- added more strict intention rule.
+
+	* src/bhv_set_play_kick_off.cpp:
+	- fixed a defect of multi kick
+
+	* src/body_dribble2008.cpp:
+	- fixed pitch size
+
+	* src/bhv_basic_move.cpp:
+	* src/bhv_press.cpp:
+	- tuned dash power.
+
+	* src/body_pass_test.cpp:
+	- tuned the receiver filter for backward direct pass.
+
+	* src/body_hold_ball2008.cpp:
+	* src/body_hold_ball2008.h:
+	- totally reimplemented.
+
+	* src/kick_table.cpp:
+	- tuned buffer size.
+
+2008-05-17  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_self_pass.cpp:
+	- tuned opponent checking.
+
+	* src/kick_table.cpp:
+	- tuned release interfere checking.
+
+	* src/body_dribble2008.cpp:
+	* src/body_dribble2008.h:
+	* src/intention_dribble2008.cpp:
+	- cleaned up. still need to test.
+
+	* src/helios_trainer.cpp:
+	* src/role_sample.cpp:
+	- fixed the dribble test code
+
+	* src/bhv_set_play_indirect_free_kick.cpp:
+	* src/formations-433/indirect-freekick-opp-formation.conf:
+	* src/formations-433/indirect-freekick-opp-formation.dat:
+	* src/formations-433/indirect-freekick-our-formation.conf:
+	* src/formations-433/indirect-freekick-our-formation.dat:
+	- tuned indirect freekick positions.
+	- fixed passer action for the indirect freekick.
+
+	* src/body_pass_test.cpp:
+	- modified the receiver filter for the direct pass.
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned defender positions at the front of our goal.
+
+	* src/bhv_danger_area_tackle.cpp:
+	- changed the evaluation rule.
+
+	* src/body_hold_ball2008.cpp:
+	* src/body_hold_ball2008.h:
+	- removed old algorithm.
+	- changed opponent distance threshold to the parameterized value.
+
+	* src/body_shoot2008.cpp:
+	- added missing turn neck action.
+
+	* src/role_center_back.cpp:
+	- added the turn neck action to check the mark target player.
+
+	* src/role_offensive_half.cpp:
+	* src/role_side_forward.cpp:
+	- tuned dash power for attack but opponent ball owner situation.
+
+	* src/kick_table.cpp:
+	- changed the policy and evaluation for the release state checking
+
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_cross_to_center.cpp:
+	* src/bhv_set_play_kick_off.cpp:
+	* src/body_clear_ball_test.cpp:
+	* src/body_pass_test.cpp:
+	- disabled kick intention.
+
+	* src/shoot_table2008.cpp:
+	- fixed coding style.
+
+	* src/body_hold_ball2008.cpp:
+	- changed opponent distance threshold from 8.0 to 6.0.
+
+	* src/bhv_pre_process.cpp:
+	* src/body_shoot2008.cpp:
+	- added turn neck action to check the opponent goalie
+
+	* src/bhv_self_pass.cpp:
+	- increased self cache size from 16 to 20.
+
+	* src/role_center_forward.cpp:
+	- fixed a condition for the cross receive move
+
+	* src/body_hold_ball2008.cpp:
+	* src/body_hold_ball2008.h:
+	- implemented new opponent avoidance algorithm.
+
+	* src/bhv_set_play_goal_kick.cpp:
+	- fixed interception rule.
+
+	* src/body_smart_kick.cpp:
+	* src/kick_table.cpp:
+	* src/kick_table.h:
+	- tuned evaluation function.
+
+2008-05-16  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_pass_test.cpp:
+	- tuned oppnent direction checking in the through pass
+	verification.
+
+	* src/bhv_self_pass.cpp:
+	- implemented more strict turn cycle prediction.
+	- added intention class to dash one step.
+
+	* src/bhv_set_play_free_kick.cpp:
+	- fixed a defect of nearest teammate search.
+
+2008-05-15  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/kick_table.cpp:
+	- fixed a bug of the kick sequence evaluation.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- changed facing target point for interception.
+
+	* src/bhv_self_pass.cpp:
+	- changed the opponent velocity handling algorithm.
+
+	* src/bhv_cross_to_center.cpp:
+	- added offside line checking for receiver.
+	- added tackling checking for receiver.
+
+	* src/body_pass_test.cpp:
+	- added tackling checking for receiver.
+
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	- changed a line defense rule.
+
+	* src/kick_table.cpp:
+	* src/kick_table.h:
+	- added copy construct and copy operator for Sequence.
+
+	* src/bhv_self_pass.cpp:
+	- fixed a bug in the self state cache generation.
+
+	* src/Makefile.am:
+	* src/body_hold_ball2008.cpp:
+	* src/body_hold_ball2008.h:
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_basic_offensive_kick.cpp:
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_keep_shoot_chance.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/body_dribble2008.cpp:
+	* src/body_kick_to_corner.cpp:
+	* src/body_pass_test.cpp:
+	* src/body_shoot2008.cpp:
+	* src/body_smart_kick.cpp:
+	* src/role_center_back.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_sample.cpp:
+	* src/role_side_back.cpp:
+	* src/role_side_forward.cpp:
+	- copied HoldBall action from librcsc to reimplement and test the
+	hold ball algorithm.
+
+2008-05-14  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_self_pass.cpp:
+	- tuned opponent checking.
+
+	* src/helios_player.cpp:
+	- changed OnePlayerMessage to SelfMessage.
+	- fixed a bug of message type chekcing.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- changed turn neck action.
+
+	* src/bhv_set_play_indirect_free_kick.cpp:
+	- fixed a move path finding algorithm.
+
+	* src/Makefile.am:
+	* src/bhv_basic_tackle.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/bhv_self_pass.h:
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	- reimplemented SelfPass as a standalone action class.
+
+	* src/bhv_cross_to_center.cpp:
+	- disabled intentional kick.
+
+	* src/body_smart_kick.cpp:
+	- fixed debug message.
+
+	* src/kick_table.cpp:
+	- implemented more strict release interfere checking.
+
+	* src/bhv_basic_tackle.cpp:
+	* src/bhv_basic_tackle.h:
+	* src/bhv_danger_area_tackle.cpp:
+	* src/bhv_danger_area_tackle.h:
+	* src/bhv_goalie_basic_move.cpp:
+	* src/bhv_goalie_chase_ball.cpp:
+	- reimplemented tackle behavior to adapt to the new tackle model.
+
+	* src/bhv_pre_process.cpp:
+	- added player's tackle checking for the simultaneous kick.
+
+	* src/body_pass_test.cpp:
+	- tuned buffer parameters.
+	- tuned pass end speed.
+	- tuned through pass checking.
+
+2008-05-13  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/kick_table.cpp:
+	* src/kick_table.h:
+	- fixed evaluation rule.
+
+	* src/body_pass_test.cpp:
+	- tuned the end speed of direct pass.
+	- tuned the checking of through pass.
+
+	* src/bhv_block_dribble.cpp:
+	- tuned virtual ball first speed.
+
+	* src/body_advance_ball_test.cpp:
+	- replaced kick action with new smart kick.
+
+	* src/kick_table.cpp:
+	* src/kick_table.h:
+	- changed the evaluation policy of the release interfere.
+
+2008-05-12  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/Makefile.am:
+	* src/body_shoot2008.cpp:
+	* src/body_shoot2008.h:
+	* src/shoot_table2008.cpp:
+	* src/shoot_table2008.h:
+	* src/bhv_pre_process.cpp:
+	- copied a shoot action from librcsc in order to tune for the new rule.
+
+	* src/bhv_block_dribble.cpp:
+	- fixed opponent's virtual target.
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned defender positioning.
+
+	* src/kick_table.cpp:
+	* src/kick_table.h:
+	- Now, unused table values are removed after sorting.
+
+	* src/body_smart_kick.cpp:
+	- fixed a debug message.
+
+	* src/kick_table.cpp:
+	- fixed a bug of the current state position.
+	- fixed a bug of the release interfere checking.
+
+2008-05-11  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_player.cpp:
+	* src/kick_table.cpp:
+	* src/kick_table.h:
+	- implemented a simple read/write for KickTable.
+
+2008-05-10  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_cross_to_center.cpp:
+	* src/bhv_penalty_kick.cpp:
+	* src/bhv_set_play_kick_off.cpp:
+	* src/body_advance_ball_test.cpp:
+	* src/body_clear_ball_test.cpp:
+	* src/body_kick_to_corner.cpp:
+	* src/body_kick_to_front_space.cpp:
+	* src/body_pass_test.cpp:
+	* src/helios_player.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	- replaced multi step kick with the new smart kick action.
+
+	* src/Makefile.am:
+	* src/body_smart_kick.cpp:
+	* src/body_smart_kick.h:
+	* src/kick_table.cpp:
+	* src/kick_table.h:
+	- added new kick simulator.
+
+2008-05-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_block_dribble.cpp:
+	* src/role_center_back.cpp:
+	- fixed a bug of the dribble block action.
+
+2008-05-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/reconnect.sh.in:
+	- modified for HELIOS.
+
+	* src/helios_player.cpp:
+	* src/helios_player.h:
+	- added implementations of virtual method.
+
+	* src/role_side_forward.cpp:
+	- added self pass action in the mid field. but not enabled yet.
+
+	* src/role_center_back.cpp:
+	* src/role_defensive_half.cpp:
+	- added dribble block action.
+
+	* src/bhv_basic_move.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/intention_receive.cpp:
+	- added change view action just before interception.
+
+	* src/bhv_goalie_basic_move.cpp:
+	- fixed a bug of goalie positioning.
+
+	* src/body_pass_test.cpp:
+	- reverted direct pass algorithm to the old versin.
+	- added pass request consideration for dash step estimation.
+
+2008-05-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- tuned a breakaway condition.
+
+	* src/bhv_block_dribble.cpp:
+	* src/role_side_back.cpp:
+	- implemented a virtual interception as a dribble block action.
+
+	* src/body_pass_test.cpp:
+	- tuned pass message buffer.
+
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_basic_offensive_kick.cpp:
+	* src/bhv_goalie_free_kick.cpp:
+	* src/bhv_keep_shoot_chance.cpp:
+	* src/bhv_set_play_free_kick.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_set_play_indirect_free_kick.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	* src/body_pass_test.cpp:
+	* src/body_pass_test.h:
+	* src/neck_turn_to_receiver.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_forward.cpp:
+	- changed the return value and argument types of get_best_pass.
+	- changed pass message buffer.
+
+	* src/helios_player.cpp:
+	- added debug info for offside/defense line.
+
+	* src/bhv_cross_to_center.cpp:
+	- expand search area for cross receive point.
+
+	* src/body_dribble2008.cpp:
+	- disabled collision check while turn.
+
+2008-04-30  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_dribble2008.cpp:
+	- tuned avoid space buffer.
+
+	* src/bhv_goalie_basic_move.cpp:
+	- tuned dangerous area positioning and body direction rule.
+
+	* src/role_center_forward.cpp:
+	- added the check of self collision in the self pass.
+	- tuned a pitch buffer for self pass.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_basic_move.cpp:
+	* src/role_center_back.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_side_back.cpp:
+	- tuned tackle probability threshold.
+
+	* src/Makefile.am:
+	- added indirect freekick formations to the dist target.
+
+	* src/helios_player.cpp:
+	- added team name checking.
+
+2008-04-29  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_cross_to_center.cpp:
+	* src/body_pass_test.cpp:
+	* src/role_center_forward.cpp:
+	- fixed oppnent check.
+
+	* src/body_intercept2008.h:
+	- fixed a defect of include guard.
+
+	* src/role_center_forward.cpp:
+	- reimplemented self pass.
+
+	* src/role_side_forward.cpp:
+	- tuned dribble target in their penalty area.
+
+	* src/body_pass_test.cpp:
+	- reimplemented through pass algorithm.
+	- reimplemented direct pass algorithm.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- tuned breakaway rule.
+
+	* src/bhv_danger_area_tackle.h:
+	- tuned default tackle probability.
+
+	* src/body_intercept2008.cpp:
+	- tuned fastest interception rule.
+
+	* src/formations-433/kickin-our-formation.conf:
+	* src/formations-433/kickin-our-formation.dat:
+	- fixed side back position.
+
+	* src/Makefile.am:
+	* src/neck_turn_to_receiver.cpp:
+	* src/neck_turn_to_receiver.h:
+	* src/bhv_basic_offensive_kick.cpp:
+	* src/bhv_keep_shoot_chance.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_forward.cpp:
+	- added new neck action, Neck_TurnToReceiver.
+
+	* src/body_intercept2008.cpp:
+	* src/body_intercept2008.h:
+	- added an aggressive interception.
+
+	* src/body_pass_test.cpp:
+	- tuned through pass.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_forward.cpp:
+	- tuned change_view rule.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_attacker_offensive_move2006.cpp:
+	* src/bhv_attacker_offensive_move2007.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_forward.cpp:
+	- added change view action before interception.
+
+	* src/intention_dribble2008.cpp:
+	- added interruption for pass request.
+
+	* src/body_pass_test.cpp:
+	- tuned through pass dash step buffer.
+
+	* src/body_dribble2008.cpp:
+	- tuned self cache size
+	- tuned avoidance buffer.
+
+	* src/helios_player.cpp:
+	- fixed attentionto.
+
+2008-04-28  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/Makefile.am:
+	* src/body_dribble2008.cpp:
+	* src/body_dribble2008.h:
+	* src/body_intercept2008.cpp:
+	* src/body_intercept2008.h:
+	* src/intention_dribble2008.cpp:
+	* src/intention_dribble2008.h:
+	- copied from librcsc in order to develop the new version.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_attacker_offensive_move2006.cpp:
+	* src/bhv_attacker_offensive_move2007.cpp:
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_basic_move.cpp:
+	* src/bhv_basic_offensive_kick.cpp:
+	* src/bhv_block_ball_kicker.cpp:
+	* src/bhv_block_dribble.cpp:
+	* src/bhv_cross_to_center.cpp:
+	* src/bhv_danger_area_tackle.cpp:
+	* src/bhv_defender_basic_block_move.cpp:
+	* src/bhv_defender_get_ball.cpp:
+	* src/bhv_go_to_static_ball.cpp:
+	* src/bhv_goalie_basic_move.cpp:
+	* src/bhv_goalie_basic_move2006.cpp:
+	* src/bhv_goalie_basic_move2007.cpp:
+	* src/bhv_goalie_chase_ball.cpp:
+	* src/bhv_goalie_free_kick.cpp:
+	* src/bhv_keep_shoot_chance.cpp:
+	* src/bhv_mark_close_opponent.cpp:
+	* src/bhv_penalty_kick.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/bhv_prepare_set_play_kick.cpp:
+	* src/bhv_press.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/bhv_set_play.cpp:
+	* src/bhv_set_play_free_kick.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	* src/bhv_shake_off_mark.cpp:
+	* src/bhv_their_goal_kick_move.cpp:
+	* src/body_advance_ball_test.cpp:
+	* src/body_clear_ball_test.cpp:
+	* src/body_forestall_block.cpp:
+	* src/body_kick_to_corner.cpp:
+	* src/body_kick_to_front_space.cpp:
+	* src/body_pass_test.cpp:
+	* src/helios_player.cpp:
+	* src/intention_receive.cpp:
+	* src/neck_goalie_turn_neck.cpp:
+	* src/role_center_back.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_goalie.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_sample.cpp:
+	* src/role_side_back.cpp:
+	* src/role_side_forward.cpp:
+	* src/view_tactical.cpp:
+	- fixed debug messages.
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned defense line for offensive situation.
+	- tuned center forward position in the mid field.
+
+	* src/bhv_go_to_static_ball.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/bhv_set_play_free_kick.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	* src/formations-433/before-kick-off.conf:
+	* src/formations-433/kickin-our-formation.conf:
+	* src/formations-433/kickin-our-formation.dat:
+	* src/formations-433/setplay-opp-formation.conf:
+	* src/formations-433/setplay-opp-formation.dat:
+	- fixed defects in the setplay situation.
+	- tuned formation for the setplay.
+
+	* src/bhv_cross_to_center.cpp:
+	- tuned close cross targets.
+
+	* src/role_center_forward.cpp:
+	- tuned positioning rule for cross receive.
+
+	* src/bhv_pre_process.cpp:
+	* src/bhv_set_play_free_kick.cpp:
+	- fixed defects of setplay.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- fixed positioning rule.
+
+	* src/Makefile.am:
+	* src/formations-433/indirect-freekick-opp-formation.conf:
+	* src/formations-433/indirect-freekick-opp-formation.dat:
+	* src/formations-433/indirect-freekick-our-formation.conf:
+	* src/formations-433/indirect-freekick-our-formation.dat:
+	* src/bhv_set_play_indirect_free_kick.cpp:
+	* src/bhv_set_play_indirect_free_kick.h:
+	* src/bhv_set_play_free_kick.cpp:
+	* src/body_pass_test.cpp:
+	* src/helios_player.cpp:
+	* src/strategy.cpp:
+	* src/strategy.h:
+	- implemented a simple indirect freekick strategy.
+
+	* src/formations-433/setplay-our-formation.conf:
+	* src/formations-433/setplay-our-formation.dat:
+	- tuned our freekick formation.
+
+2008-04-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- fixed a position for the opponent avoidance.
+
+	* src/bhv_cross_to_center.cpp:
+	- improved the ball first speed.
+
+	* src/role_center_forward.cpp:
+	- tuned a dribble target in the shoot chance area.
+
+	* src/role_side_back.cpp:
+	- tuned a cross block position threshold.
+
+	* src/role_side_forward.cpp:
+	- tuned a positioning in the shoot chance area.
+
+	* src/bhv_pre_process.cpp:
+	- disabled an intentional through pass.
+
+	* src/body_pass_test.cpp:
+	- fixed a bug of through pass buffer.
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- fixed center back position.
+	- tuned offensive players.
+
+2008-04-23  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_set_play_free_kick.cpp:
+	* src/body_pass_test.cpp:
+	* src/body_pass_test.h:
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	* src/role_center_forward.cpp:
+	* src/role_center_forward.h:
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_side_back.cpp:
+	* src/role_side_forward.cpp:
+	* src/role_side_forward.h:
+	- tuned many things. mainly through pass condition.
+
+2008-04-22  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned.
+
+	* src/body_pass_test.cpp:
+	- fixed a bug of through pass.
+
+	* src/bhv_basic_tackle.cpp:
+	- added a tackle rule when opponent is not kickable.
+
+	* src/helios_player.cpp:
+	- changed a communication rule for the ball information.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- changed distance buffer rule.
+	- tuned breakaway rule
+
+	* src/bhv_goalie_free_kick.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	- fixed a defect of hold ball.
+
+	* src/role_center_back.cpp:
+	- tuned position.
+
+	* src/role_side_back.cpp:
+	- tuned cross block position.
+
+	* src/role_side_forward.cpp:
+	- tuned a pass condition while dribble attack.
+
+2008-04-20  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- tuned a breakaway condition.
+	- tuned a distance buffer.
+
+	* src/role_side_back.cpp:
+	- tuned cross block point.
+
+2008-04-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_coach.cpp:
+	- fixed segmentation fault.
+
+	* src/role_side_back.cpp:
+	- tuned cross block position.
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned defenders.
+	- tuned defensive half.
+
+	* src/helios_coach.cpp:
+	* src/helios_coach.h:
+	- reimplemented player substitution procedure.
+
+	* src/role_center_back.cpp:
+	- tuned intercept condition.
+
+2008-04-18  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_basic_tackle.cpp:
+	- reimplemented the tackle for v12+.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- restricted the trigger condition for an aggressive receiver
+	action.
+
+	* src/role_side_back.cpp:
+	- disabled BlockDribble action.
+
+	* src/bhv_penalty_kick.cpp:
+	- increased dash power for dribble.
+
+2008-03-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_cross_to_center.cpp:
+	* src/bhv_goalie_basic_move.cpp:
+	* src/bhv_goalie_chase_ball.cpp:
+	* src/bhv_goalie_free_kick.cpp:
+	* src/bhv_penalty_kick.cpp:
+	* src/bhv_set_play.cpp:
+	* src/bhv_their_goal_kick_move.cpp:
+	* src/body_pass_test.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	- renamed ourPenaltyAreaLine to ourPenaltyAreaLineX
+	- renamed theirPenaltyAreaLine to theirPenaltyAreaLineX
+
+2008-03-17  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_block_dribble.cpp:
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_breakaway_through_pass.h:
+	* src/bhv_pre_process.cpp:
+	* src/helios_player.cpp:
+	* src/player.conf:
+	* src/role_side_forward.cpp:
+	- supported WorldModel::teammate() & WorldModel::opponent()
+
+2008-02-08    <akiyama@akymws.a01.aist.go.jp>
+
+	* src/bhv_basic_tackle.cpp:
+	* src/bhv_danger_area_tackle.cpp:
+	- supported a v.12 tackle model.
+
+2008-01-16  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/home_positions.cpp:
+	* src/role_center_back.cpp:
+	* src/role_side_forward.cpp:
+	- fixed compilation error.
+
+2007-12-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_coach.cpp (HeliosCoach::doFirstSubstitute):
+	- fixed a defect in the player substitution compatibility.
+
+2007-11-13  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_basic_tackle.cpp:
+	* src/bhv_danger_area_tackle.cpp:
+	- considered maxTacklePower() and minTacklePower().
+
+2007-11-12  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/start.sh.in:
+	- added '--debug-coach' option.
+
+	* src/helios_coach.cpp:
+	* src/helios_player.cpp:
+ 	- moved the initializaion of say message parsers from base
+	classes.
+
+2007-11-09  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/start.sh.in:
+	- added a command line option, '--debug-coach'
+
+	* src/helios_coach.cpp:
+	- fixed an out of range error.
+
+2007-11-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/coach.conf:
+	* src/helios_coach.cpp:
+	* src/player.conf:
+	* src/start.sh.in:
+	- added debug options for coach.
+	- tested coach's audio sensor and memory.
+	- updated client version to 12.
+
+2007-10-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_basic_tackle.cpp:
+	* src/bhv_danger_area_tackle.cpp:
+	* src/coach.conf:
+	* src/helios_coach.cpp:
+	* src/player.conf:
+	* src/role_side_forward.cpp:
+	- supported new see message timing.
+
+2007-10-13  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/coach.conf:
+	* src/helios_coach.cpp:
+	- supported 'use_team_graphic' option.
+	- restricted the total number of team_graphic command per cycle.
+
+2007-10-12  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_coach.cpp:
+	* src/helios_coach.h:
+	- implemented a team_graphic support.
+
+2007-10-04  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_pre_process.cpp:
+	- follow the changes of librcsc.
+
+2007-09-28  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/bhv_attacker_offensive_move.cpp:
+	- fixed include <rcsc/player/audio...> to <rcsc/common/audio...>
+
+2007-09-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_coach.cpp:
+	* src/helios_coach.h:
+	* src/helios_trainer.cpp:
+	- changed HeteroID to int.
+
+2007-09-25  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_kick_to_corner.cpp:
+	* src/neck_goalie_turn_neck.cpp:
+	* src/bhv_defender_get_ball.cpp:
+	* src/bhv_defender_basic_block_move.cpp:
+	* src/view_tactical.cpp:
+	* src/bhv_set_play_free_kick.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_side_forward.cpp:
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/body_clear_ball_test.cpp:
+	* src/bhv_goalie_basic_move2007.cpp:
+	* src/role_sample.cpp:
+	* src/bhv_basic_move.cpp:
+	* src/bhv_block_ball_kicker.cpp:
+	* src/role_goalie.cpp:
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	* src/bhv_prepare_set_play_kick.cpp:
+	* src/bhv_keep_shoot_chance.cpp:
+	* src/bhv_goalie_free_kick.cpp:
+	* src/strategy.cpp:
+	* src/bhv_their_goal_kick_move.cpp:
+	* src/bhv_basic_defensive_kick.cpp:
+	* src/bhv_set_play.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_press.cpp:
+	* src/bhv_attacker_offensive_move2006.cpp:
+	* src/bhv_goalie_chase_ball.h:
+	* src/bhv_basic_tackle.cpp:
+	* src/bhv_penalty_kick.h:
+	* src/role_offensive_half.cpp:
+	* src/bhv_mark_close_opponent.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	* src/body_advance_ball_test.cpp:
+	* src/intention_receive.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/role_center_forward.cpp:
+	* src/bhv_goalie_basic_move.cpp:
+	* src/bhv_goalie_basic_move2006.cpp:
+	* src/bhv_go_to_static_ball.cpp:
+	* src/bhv_defender_get_ball.h:
+	* src/bhv_danger_area_tackle.cpp:
+	* src/body_forestall_block.cpp:
+	* src/body_pass_test.cpp:
+	* src/body_kick_to_front_space.cpp:
+	* src/bhv_basic_offensive_kick.cpp:
+	* src/bhv_cross_to_center.cpp:
+	* src/bhv_goalie_chase_ball.cpp:
+	* src/bhv_shake_off_mark.cpp:
+	* src/bhv_penalty_kick.cpp:
+	* src/bhv_block_dribble.cpp:
+	* src/bhv_self_pass.cpp:
+	* src/bhv_attacker_offensive_move.cpp:
+	- changed rcsc/player/logger.h to rcsc/common/logger.h
+	- fixed include order.
+
+2007-09-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_forestall_block.cpp:
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_block_dribble.cpp:
+	* src/bhv_penalty_kick.cpp:
+	* src/bhv_press.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_side_forward.cpp:
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	* src/role_offensive_half.cpp:
+	* src/role_center_forward.cpp:
+	- supported the changes of librcsc. Vector2D::oprator bool() is no
+	longer available.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- tuned positioning rule.
+
+2007-08-31  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- tuned position.
+
+	* src/helios_player.cpp:
+	- fixed communication rule for saySelf()
+
+2007-08-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_player.cpp:
+	* src/helios_player.h:
+	- supported the changes of librcsc. added HeliosPlayer::saySelf()
+	to broadcast the self status.
+
+2007-08-25  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/body_cross_to_center.cpp:
+	* src/body_pass_test.cpp:
+	* src/helios_player.cpp:
+	- follw the changes of librcsc. implemented new communication.
+
+2007-08-25  Hiroki Shimora <shimora@users.sourceforge.net>
+
+	* src/helios_player.cpp:
+	* src/soccer_role.h:
+	* src/bhv_penalty_kick.cpp:
+	- fixed some typos in comments.
+
+2007-08-25  Hiroki Shimora <shimora@users.sourceforge.net>
+
+	* src/start.sh.in:
+	- fixed a bug in start script introduced at previous change.
+
+2007-08-25  Hiroki Shimora <shimora@users.sourceforge.net>
+
+	* src/start.sh.in:
+	- changed start script to run on some environment that does
+	  not have `seq' command such as *BSD systems.
+
+2007-08-10  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_set_play_kick_in.cpp:
+	* src/bhv_pre_process.cpp:
+	* src/body_pass_test.cpp:
+	* src/bhv_cross_to_center.cpp:
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_set_play_free_kick.cpp:
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/helios_player.cpp:
+	- follow the changes of librcsc.
+
+	* src/helios_trainer.cpp:
+	- changed sample action.
+
+2007-07-31  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_breakaway_through_pass.cpp:
+	- tuned angle width buffer.
+	- tuned ball speed.
+
+	* src/helios_player.cpp:
+	- changed say actions to foloow the changes of librcsc.
+
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	- tuned shoot area dash speed.
+
+	* src/bhv_cross_to_center.cpp:
+	- fixed a bug in the loop procedure.
+	- changed to the non-enforce kick.
+
+	* src/helios_player.cpp:
+	- changed goalie message format.
+	- changed offsile message rule.
+
+2007-07-30  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_player.cpp:
+	* src/bhv_set_play_free_kick.cpp:
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_set_play_goal_kick.cpp
+	* src/bhv_set_play_kick_in.cpp:
+	* src/body_pass_test.cpp:
+	* src/bhv_cross_to_center.cpp:
+	* src/bhv_attacker_offensive_move.cpp:
+	- reimplemented a communication to follow the changes of librcsc
+	- tuned a rule of offside line communication.
+
+2007-07-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_basic_defensive_kick.cpp:
+	- supported the changes of librcsc and fixed communication rule.
+
+2007-07-26  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_player.cpp (sayBall):
+	- fixed the check of the length of ball message.
+
+	* bootstrap:
+	- Now, autoreconf is used for bootstrap.
+
+	* configure.ac:
+	- removed check of librcsc_formation.
+	- added strict check of librcsc_gz.
+
+	* Makefile.am:
+	- added ACLOCAL_AMFLAGS
+
+2007-07-20  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	- added check of librcsc_formation.
+
+2007-07-18  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/Makefile.am:
+	- removed body_intercept_test.*, body_dribble_test.* and
+	intention_dribble_test.*
+
+	* src/helios_coach.cpp:
+	* src/helios_coach.h:
+	- added initImpl()
+
+2007-07-07  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_player.cpp (sayIntercept):
+	- fixed condition of self intercept info.
+
+	* src/bhv_breakaway_through_pass.cpp:
+	- added the check of  first speed restriction.
+
+	* src/role_center_forward.cpp:
+	- fixed bug in doCheckCrossPoint().
+
+	* src/body_pass_test.cpp (evaluate_routes):
+	- tuned opponent distance rate.
+
+	* src/bhv_cross_to_center.cpp:
+	- fixed target point. now receiver's velocity y is considered.
+
+	* src/bhv_attacker_offensive_move.cpp (execute):
+	- fixed breakaway rule. removed side area.
+
+2007-07-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned defenders' position in the defensive midfield
+
+	* src/bhv_set_play_free_kick.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	- improved avoid target rule.
+
+	* src/body_pass_test.cpp (verify_through_pass):
+	- tuned aggressve rule. added target point x threshold
+
+	* src/role_center_back.cpp (doMarkMove):
+	- tuned mark target calculation
+
+	* src/bhv_defender_get_ball.cpp (execute):
+	- tuned target point
+
+	* src/bhv_attacker_offensive_move.cpp (execute):
+	- tuned breakaway rule
+	- tuned target point
+
+2007-07-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_breakaway_through_pass.cpp (search):
+	- tuned offside line buffer from 2.0 to 3.0
+
+	* src/bhv_attacker_offensive_move.cpp (finished):
+	- added heardPassTime as a finish condition.
+
+	* src/bhv_breakaway_through_pass.cpp:
+	- tuned end speed from 1.3 to 1.15
+
+	* src/bhv_cross_to_center.cpp (create_close):
+	- tuned goalie catchable buffer from 0 to 1.5
+
+	* src/helios_player.cpp (attentiontoSomeone):
+	- added attentionto for the attacke situation
+
+	* src/role_center_back.cpp:
+	* src/role_center_back.h:
+	* src/role_side_back.cpp:
+	- disabled dynamic defense positioning
+	- added new restrictions in the center back mark positioning.
+	- changed distance threshold for move position when opponent mark.
+
+2007-07-02  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_player.cpp:
+	- added debug code.
+
+2007-07-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_breakaway_through_pass.cpp:
+	- tuned end speed. 1.1 -> 1.3
+
+	* src/helios_player.cpp:
+	- cleaned up communication procedure.
+	- added defense line communication.
+
+2007-06-30  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/test/body_dribble_test.cpp (doKickTurnsDashes):
+	- implemented quick turn
+
+	* src/bhv_set_play_free_kick.cpp:
+	* src/bhv_set_play_goal_kick.cpp:
+	* src/bhv_set_play_kick_in.cpp:
+	- implemented simple shake off mark action. need to reimplement
+	more sophisticated algorithm later.
+
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	- added dynamic positioning rule. opponent foward y-width is
+	considered.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_breakaway_through_pass.cpp:
+	- tuned breakaway condition
+
+	* src/bhv_basic_defensive_kick.cpp:
+	- tuned hold threshold from 3.0 to 4.0
+
+	* src/role_center_back.cpp:
+	* src/role_center_back.h:
+	- added getDefMidMoveTarget()
+
+	* src/bhv_cross_to_center.cpp:
+	- changed catchable area buffer to 0 for close cross
+
+2007-06-29  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/test/body_dribble_test.cpp:
+	- added new action doKickTurnsDashes(), but not implemented yet.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- fixed defect that causes the infinite intention
+
+	* src/bhv_breakaway_through_pass.cpp:
+	- added special case search in the penalty area line target
+
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	- changed home position rule.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- tuned turn angle buffer.
+
+	* src/bhv_attacker_offensive_move.cpp:
+	* src/bhv_breakaway_through_pass.cpp:
+	* src/bhv_breakaway_through_pass.h:
+	* src/bhv_pre_process.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	* src/Makefile.am:
+	- implemented intentional breakaway through pass.
+
+	* src/helios_player.cpp (communicationImpl):
+	- fixed target player rule in both of say and attentionto
+
+	* src/bhv_attacker_offensive_move.cpp:
+	- fixed breakaway target point
+
+2007-06-28  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_attacker_offensive_move2006.cpp:
+	* src/bhv_attacker_offensive_move2007.cpp:
+	- added to implement an intentional breakaway and its
+	communication. but not completed yet.
+
+	* src/helios_player.cpp (communicationImpl):
+	- fixed target player rule in both of say and attentionto
+
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	- fixed home position rule
+
+	* src/formations-433/goalie-formation.conf:
+	* src/formations-433/goalie-formation.dat:
+	* src/strategy.cpp:
+	- aussported goalie-formation.conf
+
+	* src/bhv_goalie_basic_move2007.cpp:
+	* src/bhv_goalie_basic_move2007.h:
+	- added for backup
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned goalie positioning
+
+	* src/bhv_shake_off_mark.cpp:
+	* src/bhv_shake_off_mark.h:
+	- added but not implemented yet.
+
+2007-06-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/goalie_move_table.cpp:
+	- added to search the goalie positioning matrix.
+
+	* src/bhv_goalie_basic_move2006.cpp:
+	* src/bhv_goalie_basic_move2006.h:
+	* src/bhv_goalie_basic_move.cpp:
+	* src/bhv_goalie_basic_move.h:
+	- started to reimplement.
+
+2007-06-26  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_block_dribble.cpp:
+	* src/role_center_back.cpp:
+	- inserted Neck_TurnToBallAndPlayer()
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned defenders' position in defensive mid field
+
+	* src/test/role_side_forward.cpp:
+	- tuned action selection rule.
+
+	* src/test/role_center_back.cpp:
+	- tuned move target
+
+	* src/helios_player.cpp (communicationImpl):
+	- fixed communication rule for ball info
+
+	* src/test/body_dribble_test.cpp:
+	- changed opponent check rule and keep angle rule.
+
+2007-06-25  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/role_center_back.cpp:
+	- changed block center rule
+	- replaced stopper area move with def mid area move.
+
+	* src/bhv_basic_offensive_kick.cpp:
+	- tuned opponent distance threshold.
+
+	* src/test/body_intercept_test.cpp (doInertiaDash):
+	- fixed inertia dash rule.
+
+	* src/helios_player.cpp (communicationImpl):
+	- added communication of the opponent intercept info
+
+	* src/helios_coach.cpp:
+	- changed hetero player assignment rule.
+
+2007-06-24  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/test/body_dribble_test.cpp:
+	* src/test/body_dribble_test.h:
+	- reimplemented. this version has been tested only for the side
+	back type.
+
+	* src/test/body_intercept_test.cpp:
+	- tuned trap buffer.
+
+	* src/role_side_back.cpp:
+	- enabled Bhv_BlockDribble
+
+	* src/role_offensive_half.cpp:
+	- tuned dribble block buffer.
+
+2007-06-21  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/test/body_intercept_test.cpp (doInertiaDash):
+	- added check of goalie.
+
+	* src/test/body_dribble_test.cpp:
+	- activated doTurnOnly()
+	- cleaned up.
+
+2007-06-20  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/role_offensive_half.cpp:
+	* src/role_offensive_half.h:
+	- cleaned up
+
+	* src/bhv_pre_process.cpp:
+	- swap the order of the intention and shoot check.
+
+	* src/test/body_intercept_test.cpp:
+	- tuned 1 step trap dash.
+
+	* src/test/body_dribble_test.cpp:
+	* src/test/body_dribble_test.h:
+	* src/test/body_intercept_test.cpp:
+	* src/test/body_intercept_test.h:
+	* src/test/intention_dribble_test.cpp:
+	* src/test/intention_dribble_test.h:
+	- activated for the tuning.
+	- fixed close interception buffer for the forward dash trap.
+
+	* src/bhv_block_dribble.cpp:
+	* src/bhv_block_dribble.h:
+	- started to implent a new block move.
+
+2007-06-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/home_positions.cpp:
+	* src/home_positions.h:
+	- added check of the last updated time.
+
+2007-06-17  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_coach.cpp:
+	* src/helios_coach.h:
+	- implemented freeform message for player type broadcasting.
+
+2007-06-15  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/Makefile.am
+	* src/home_positions.cpp:
+	* src/home_positions.h:
+	* src/role_offensive_half.cpp:
+	* src/role_defensive_half.cpp:
+	* src/role_center_forward.cpp:
+	* src/role_side_forward.cpp:
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	- added new class, HomePositions, which hold all players' home
+	position and their side type.
+
+2007-06-14  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/bhv_pre_process.cpp:
+	- supported the changes of librcsc.
+
+2007-05-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/Makefile.am:
+	* src/coach.conf:
+	* src/start.sh.in:
+	- added coach.conf for the coach agent configuration.
+
+2007-05-18  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	* src/Makefile.am:
+	* src/reconnect.sh.in:
+	- added a sample reconnect script.
+
+	* src/bhv_penalty_kick.cpp:
+	- fixed goalie behavior in the PenaltyScore or PenaltyMiss.
+
+2007-04-06  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	- updated package version to 6.3.0. This version supported
+	librcsc-1.3.0.
+
+	* src/main_coach.cpp:
+	* src/main_player.cpp:
+	* src/main_trainer.cpp:
+	* src/helios_coach.cpp:
+	* src/helios_coach.h:
+	* src/helios_player.cpp:
+	* src/helios_player.h:
+	* src/helios_trainer.cpp:
+	* src/helios_trainer.h:
+	- followed the changes of librcsc.
+
+2007-04-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_dribble_test.cpp:
+	* src/body_dribble_test.h:
+	* src/body_intercept_test.cpp:
+	* src/body_intercept_test.h:
+	* src/body_shoot_test.cpp:
+	* src/body_shoot_test.h:
+	* src/shoot_table_test.cpp:
+	* src/shoot_table_test.h:
+	- some test codes are backported into librcsc.
+	- some test codes are moved into test directry.
+
+	* configure.ac:
+	* config/ax_boost_base.m4:
+	- added AX_BOOST_BASE for boost checking.
+
+2007-03-11  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_forestall_block.cpp:
+	- added wait counter.
+
+	* src/role_center_forward.cpp (doShootAreaKick):
+	- added hold counter
+
+	* src/role_side_back.cpp:
+	- fixed nearest attacker search.
+
+2007-03-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	- added block pass action.
+
+	* src/bhv_cross_to_center.cpp (create_target):
+	- added to check the dash step using PlayerType.
+
+2007-03-07  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/strategy.cpp:
+	* src/strategy.h:
+	- added M_setplay_opp_formation
+
+2007-03-06  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_dribble_test.cpp:
+	- fixed an invalid self state prediction.
+
+2007-03-02  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_intercept_test.cpp:
+	- reimplemented an algorithm to select the best interception.
+
+2007-03-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/shoot_table_test.cpp:
+	* src/shoot_table_test.h:
+	- now, goalie angle is always considered for the shoot score.
+	- goalie_never_reach_ becomes the member of struct Shot.
+
+	* src/strategy.cpp:
+	- simplified ball area.
+
+2007-02-26  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_advance_ball_test.cpp:
+	* src/body_advance_ball_test.h:
+	* src/body_clear_ball_test.cpp:
+	* src/body_clear_ball_test.h:
+	* src/Makefile.am:
+	- copied actions from librcsc in order to reimplement.
+
+2007-02-25  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/shoot_table_test.cpp:
+	- fixed invalid turn angle margin
+
+	* src/body_dribble_test.cpp:
+	- changed dash count policy. Now, given dash count is used in
+	search loop.
+
+2007-02-23  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/shoot_table_test.cpp:
+	* src/shoot_table_test.h:
+	- reimplemented. Now, possibility of goalie catch is strictly checked.
+
+2007-02-20  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_pass_test.cpp:
+	* src/body_pass_test.h:
+	* src/intention_dribble_test.cpp:
+	* src/intention_dribble_test.h:
+	- added for test.
+
+2007-02-14  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/Makefile.am:
+	* src/body_shoot_test.cpp:
+	* src/body_shoot_test.h:
+	* src/shoot_table_test.cpp:
+	* src/shoot_table_test.h:
+	- added for the testing purpose.
+
+2007-02-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/body_intercept_test.cpp:
+	- tuned the best interseption estimation.
+
+	* src/role_center_forward.cpp:
+	- tuned positioning in the attack situation
+	- tuned dribble dash step in middle area
+
+2007-02-06  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/role_defensive_half.cpp:
+	* src/role_offensive_half.cpp:
+	- removed press action.
+
+	* src/formations-433/normal-formatio.conf:
+	* src/formations-433/normal-formatio.dat:
+	- tuned forward position in the shootable area, especiary center
+	forward.
+
+2007-02-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/role_side_back.cpp (doCrossBlockAreaMove):
+	- tuned block position.
+
+2007-02-04  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/role_offensive_half.cpp (doOffensiveMove):
+	* src/role_defensive_half.cpp (doDefensiveMove):
+	- fixed incorrect condition.
+
+	* src/*:
+	- tuned many things, mainly defender positioning rules, and center
+	forward formation.
+
+2007-02-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/*.cpp:
+	- changed the method to refer the nearest opponent.
+
+2007-01-31  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/formations-433/normal-formation.conf:
+	* src/formations-433/normal-formation.dat:
+	- tuned offense.
+	- tuned side back dribble block.
+
+	* src/role_side_forward.cpp:
+	- tuned dribble dodge condition in their penalty area
+
+	* src/role_center_back.cpp:
+	* src/role_side_back.cpp:
+	- tuned defense line parameter
+
+2006-12-20  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	* config/ax_boost.m4:
+	- added boost checking macro.
+	- updated AC_PREREQ to 2.60
+	- added missing check of librcsc_param
+
+2006-11-13  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/player.conf:
+	- added log_ext option.
+
+2006-11-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	- Now, HAVE_LIBRCSC_GZ is defined if it exists.
+
+2006-11-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	- replaced AC_CHECK_HEADER with AC_CHECK_HEADERS
+
+2006-10-21  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/role_center_forward.cpp:
+	- tuned center forward positioning rule in shootable area.
+
+2006-10-16  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/*:
+	- follow the changes of librcsc.
+
+2006-10-15  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_player.h:
+	* src/helios_player.cpp (doInit):
+	- foolow the new interface of librcsc. removed additional_param_map.
+
+2006-10-09  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/helios_player.h:
+	* src/helios_player.cpp (doInit):
+	- added additional_param_map to follow the librcsc's changes.
+
+2006-10-06  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/Makefile.am:
+	- follow the change of librcsc. changed library dependency.
+
+2006-10-04  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* src/formation.h:
+	* src/formation.cpp:
+	* src/formation_bpn.h:
+	* src/formation_bpn.cpp:
+	* src/formation_delaunay.h:
+	* src/formation_delaunay.cpp:
+	- removed and replaced by librcsc.
+
+2006-07-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/start.sh.in:
+	- added an input file as a configurable start script.
+
+	* tokyotech/start.sh:
+	- removed.
+
+	* configure.ac:
+	- added new variable LIBRCSCLIB to decide the install prefix of
+	librcsc.
+
+2006-07-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/body_dribble.cpp (getAvoidAngle):
+	- fixed invalid boundary check.
+
+	* rcsc/player/self_object.cpp (updateBallInfo):
+	- tuned kickable buffer
+
+2006-06-26  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/body_shoot.cpp (search):
+	- fixed bug in one step shoot evaluation.
+
+2006-06-25  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/player_agent.h:
+	* rcsc/player/player_agent.cpp:
+	- added ArmAction related methods.
+
+	* rcsc/player/soccer_action.h:
+	- added ArmAction.
+	- renamed TurnNeckAction to NeckAction.
+	- renamed ViewNeckAction to ViewAction.
+
+2006-06-10  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/role_side_forward.cpp:
+	- added ruled to kick to the near side corner when dribble attack
+	situation.
+
+	* tokyotech/bhv_cross_to_center.cpp:
+	- fixed invalid condition check. as a result offense performance
+	is improved greatly.
+
+2006-06-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/debug_client.cpp (clear):
+	- added all fugure's clear procedure.
+
+	* rcsc/player/audio_sensor.h:
+	* rcsc/player/audio_sensor.cpp:
+	* rcsc/player/world_model.h:
+	* rcsc/player/world_model.cpp:
+	- started to implement new audio sensor protocol.
+
+2006-06-07  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/body_dribble.h:
+	* rcsc/action/body_dribble.cpp:
+	- started to implement new dribble algorighm
+
+2006-06-06  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/strategy.h:
+	* tokyotech/strategy.cpp:
+	- offense_formation.* and defense_formation.* are replaced by
+	normal_formation.*
+	- added setplay our formation.
+
+	* tokyotech/formations-443/:
+	* tokyotech/formations-442/:
+	- started to create several formation patterns.
+
+	* tokyotech/formations/:
+	* tokyotech/formations-bpn/:
+	* tokyotech/formations-delaunay/:
+	- started to manage formation data for each method.
+
+	* tokyotech/delaunay.h:
+	* tokyotech/delaunay.cpp:
+	* tokyotech/formation.h:
+	* tokyotech/formation.cpp:
+	* tokyotech/formation_bpn.h:
+	* tokyotech/formation_bpn.cpp:
+	* tokyotech/formation_delaunay.h:
+	* tokyotech/formation_delaunay.cpp:
+	- added Delaunay Triangulation formation construction method.
+	- BPN type method was replaced.
+
+2006-06-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/debug_client.h:
+	* rcsc/player/debug_client.cpp:
+	- added new interface for drawable figure types
+
+2006-05-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/body_turn_to_angle.h:
+	- added new basic action Body_TurnToAngle.
+
+	* rcsc/player/player_agent.cpp (doViewAction):
+	- added check of see synchronization status.
+
+	* rcsc/player/action_effector.cpp (makeCommand):
+	* rcsc/player/player_agent.cpp (doNeckAction):
+	- added check of empty action.
+
+2006-05-18  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	* rcsc/Makefile.am:
+	* tokyotech/Makefile.am:
+	- deleted entry for rcsc/client/*
+
+	* rcsc/client/*:
+	- moved to librcsc.
+
+2006-05-16  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/*:
+	- fixed for namespace rcsc.
+
+	* rcsc/*:
+	- included in namespace rcsc.
+	- libtoolized again to migrate to the librcsc.
+
+	* rcsc/client/Makefile.am:
+	- changed to libtool library.
+
+	* configure.ac:
+	* Makefile.am:
+	- removed switch of team building option.
+	- removed newhope directory from building target.
+
+	* tokyotech/Makefile.am:
+	- removed unused variables.
+
+	* newhope/*:
+	- removed from repository trunk.
+
+2006-05-09  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/bhv_basic_defensive_kick.cpp (execute):
+	- added missing body action.
+
+2006-05-06  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/player.conf (team_name):
+	- changed default team name to HELIOS.
+
+	* tokyotech/*:
+	- added copyright
+
+2006-05-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/helios_player.cpp (doAction):
+	- fixed defect about penalty kick.
+
+2006-05-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/role_center_forward.cpp (doShootAreaKick):
+	- tuned opponent check and dribble dash power.
+
+	* configure.ac:
+	- updated minor version. helios-5.1.0 release.
+
+2006-04-30  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/role_center_forward.cpp (doShootAreaKick):
+	- added new dribble rule.
+
+2006-04-28  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/role_center_back.cpp:
+	- tuned defensive positioning target position.
+
+2006-04-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/body_hold_ball.cpp (avoidOpponent):
+	- improved opponent check rule.
+
+2006-02-23  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/body_kick_to_relative.cpp:
+	- cleaned up the code.
+
+	* rcsc/action/body_hold_ball.cpp (avoidOpponent):
+	- tuned keep distance buffer.
+
+2006-02-22  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/bhv_go_to_point_look_ball.h:
+	* rcsc/action/bhv_go_to_point_look_ball.cpp:
+	* rcsc/action/body_hold_ball.h:
+	* rcsc/action/body_hold_ball.cpp:
+	* rcsc/action/body_stop_ball.h:
+	* rcsc/action/body_stop_ball.cpp:
+	- cleaned up the code.
+
+	* rcsc/action/body_go_to_point.h:
+	* rcsc/action/body_go_to_point.cpp:
+	- cleaned up the code.
+
+2006-02-21  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/player_agent.h:
+	* rcsc/player/player_agent.cpp:
+	- renamed some member methods
+	- removed invalid server alive check.
+
+2006-02-17  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/trainer/trainer_config.h:
+	* rcsc/trainer/trainer_config.cpp:
+	- added TrainerConfig class.
+
+	* rcsc/coach/coach_config.cpp (createMap):
+	- fixed invalid variable assignment.
+
+	* rcsc/coach/coach_agent.h:
+	* rcsc/coach/coach_agent.cpp:
+	- cleaned up the code.
+	- added CoachAgentImpl.
+
+	* rcsc/trainer/trainer_agent.h:
+	* rcsc/trainer/trainer_agent.cpp:
+	- cleaned up the code.
+
+	* tokyotech/*:
+	* rcsc/action/*:
+	- renamed action files.
+
+2006-02-16  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/soccer_action.h:
+	- SoccerAction is renamed to SoccerBehavior.
+	- all actions are classified to body, neck, view or behavir.
+
+	* rcsc/player/player_agent.h:
+	* rcsc/player/player_agent.cpp:
+	- SoccerIntentionQueue becomes the derived class of
+	SoccerIntention.
+	- Now, PlayerAgent holds the pointer of SoccerIntention as a
+	member variable.
+
+2006-02-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/player_object.h:
+	* rcsc/player/world_model.h:
+	- typedef of PlayerCont and PlayerPtrCont is moved to global
+	scope.
+
+2006-01-31  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/world_model.h:
+	- renamed time() to getTime().
+	- renamed accessor interface methods for sorted players.
+
+2006-01-26  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/act_normal_view.h:
+	* rcsc/action/act_synch_view.h:
+	* rcsc/action/act_wide_view.h:
+	* tokyotech/act_tactical_change_view.h:
+	- added action type specifier.
+	- changed parent class to ChangeViewAction..
+
+	* rcsc/action/act_neck_only_field_scan.h:
+	* rcsc/action/act_neck_only_to_goalie_or_scan.h:
+	* rcsc/action/act_neck_only_to_ball.h:
+	* rcsc/action/act_neck_only_to_low_conf_teammate.h:
+	* rcsc/action/act_neck_only_to_ball_or_scan.h:
+	* rcsc/action/act_neck_only_to_point.h:
+	* tokyotech/act_goalie_turn_neck.h:
+	- added action type specifier.
+	- changed parent class to TurnNeckAction..
+
+	* rcsc/player/player_agent.h:
+	* rcsc/player/player_agent.cpp:
+	- added reserved action pointer for turn_neck and change_view.
+	- added interface to reserve turn_neck and change_view.
+	- added interface to push intention directly.
+	- removed interface to intention queue.
+
+	* rcsc/player/soccer_action.h:
+	- added TurnNeckAction, ChangeViewAction and BodyAction.
+
+	* rcsc/player/self_object.h:
+	- added isFreezed() method.
+
+	* rcsc/action/intention_time_limit_action.h:
+	* rcsc/action/intention_time_limit_action.cpp:
+	- added new intention class.
+
+2006-01-25  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/localization.h:
+	* rcsc/player/localization.cpp:
+	- renamed class and file.
+
+	* rcsc/player/object_table.h:
+	* rcsc/player/object_table.cpp:
+	* rcsc/player/localizer.cpp:
+	- landmark map is moved from LocalizerImpl to ObjectTable.
+
+	* configure.ac:
+	* tokyotech/Makefile.am:
+	* rcsc/trainer/Makefile.am:
+	- replaced librcsc_* by librcsc
+
+	* rcsc/player/self_object.cpp:
+	* rcsc/player/audio_sensor.h:
+	* rcsc/player/audio_sensor.cpp:
+	* rcsc/player/fullstate_sensor.h:
+	* rcsc/player/fullstate_sensor.cpp:
+	* rcsc/player/penalty_kick_state.h:
+	* rcsc/player/penalty_kick_state.cpp:
+	* rcsc/player/visual_sensor.h:
+	* rcsc/player/visual_sensor.cpp:
+	* rcsc/player/world_model.h:
+	* rcsc/player/world_model.cpp:
+	- renamed M_update_time to M_time.
+	- renamed getUpdateTime() to time().
+
+2006-01-24  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/visual_sensor.h:
+	* rcsc/player/world_model.h:
+	- renamed accessor interface methods.
+
+2006-01-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/player_agent.cpp:
+	- added see arrival timing counter for profiling purpose.
+
+	* rcsc/player/player_config.h:
+	* rcsc/player/player_config.cpp:
+	- added M_wait_time_thr_synch_view and M_wait_time_thr_nosync_view
+	to allow us to configure the decision wait threshold.
+	- renamed M_sync_view_msec_thr to M_normal_view_time_thr;
+
+	* rcsc/player/visual_effector.h:
+	* rcsc/player/visual_effector.cpp:
+	* rcsc/player/see_state.h:
+	* rcsc/player/see_state.cpp:
+	- renamed class and file.
+
+	* rcsc/player/ball_object.h:
+	* rcsc/player/ball_object.cpp:
+	* rcsc/player/player_object.h:
+	* rcsc/player/player_object.cpp:
+	* rcsc/player/self_object.h:
+	* rcsc/player/self_object.cpp:
+	- added static member variables that hold count threshold value.
+
+	* rcsc/player/player_config.h:
+	* rcsc/player/player_config.cpp:
+	* rcsc/coach/coach_config.h:
+	* rcsc/coach/coach_config.cpp:
+	- removed singleton interface.
+
+	* rcsc/client/basic_client.cpp (connectTo):
+	- added check of interval msec value
+
+	* rcsc/player/coach_agent.h:
+	* rcsc/player/coach_agent.cpp:
+	* rcsc/player/player_agent.h:
+	* rcsc/player/player_agent.cpp:
+	* rcsc/player/trainer_agent.h:
+	* rcsc/player/trainer_agent.cpp:
+	- implemented doConnect() method.
+
+	* rcsc/client/basic_client.h:
+	- added pure virtual method doConnect() and insert it to the top
+	of run();
+
+2006-01-18  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/world_model.h:
+	* rcsc/player/world_model.cpp (checkUnknownPlayer):
+	- checkSideSeenPlayers() is renamed to checkTeamPlayer()
+	- checkUnknownPlayers() is renamed to checkUnknownPlayer()
+	- cleaned up.
+
+2006-01-16  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/player_config.h:
+	* rcsc/player/player_config.cpp:
+	* rcsc/action/act_sync_view.cpp:
+	- added new option 'see_sync_msec_thr'
+
+2006-01-14  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/basic_actions.h:
+	- changed to the header file that includes only header files.
+
+	* rcsc/action/act_body_neck_to_ball.h:
+	* rcsc/action/act_body_neck_to_point.h:
+	* rcsc/action/act_body_only_to_ball.h:
+	* rcsc/action/act_body_only_to_point.h:
+	* rcsc/action/act_neck_body_to_ball.h:
+	* rcsc/action/act_neck_body_to_point.h:
+	* rcsc/action/act_neck_only_to_ball.h:
+	* rcsc/action/act_neck_only_to_point.h:
+	* rcsc/action/act_neck_to_relative.h:
+	* rcsc/action/act_normal_view.h:
+	* rcsc/action/act_wide_view.h:
+	- backed from prevous revisou.
+
+2006-01-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/act_synch_view.cpp (doTimerSynchView):
+	- added check of view width when no current see.
+
+	* tokyotech/act_tactical_change_view.cpp (doDefault):
+	* tokyotech/helios_player.cpp:
+ 	- added test version wide view
+
+	* rcsc/player/body_sensor.h:
+	- reverted to the old type parser.
+
+2006-01-07  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/helios_player.cpp (doCommunication):
+	- added common say message
+	- removed pass message
+
+	* rcsc/action/act_pass.cpp:
+	* tokyotech/act_cross_to_center.cc:
+	- removed effector().setPass()
+	- added agent->doSay()
+
+	* rcsc/player/player_agent.h:
+	- added interface to audio sensor to allow to use codec.
+	- changed effector() to const method.
+
+	* rcsc/player/action_effector.h:
+	* rcsc/player/action_effector.cpp:
+	- removed pass info
+	- added say message string to record action effect
+
+	* rcsc/player/self_object.h:
+	* rcsc/player/self_object.cpp:
+	- added M_arm_movable to check if arm is movable
+
+	* tokyotech/act_tactical_change_view.cpp (doDefault):
+	- added wide view rule for field scan when ball lost.
+
+	* rcsc/player/player_agent.cpp (adjustSeeSynchSynchMode)
+	(adjustSeeSynchNormalMode):
+	- added change view (narrow, high) when play_on and low mode.
+
+2006-01-06  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/coach/coach_manager.cc:
+	* rcsc/coach/coach_manager.h:
+	- removed from Repository HEAD
+
+	* rcsc/client/referee.h:
+	* rcsc/client/referee.cpp:
+	- playmode management was replaced by lircsc's GameMode class.
+	- removed.
+
+	* rcsc/action/act_turn_to_check_ball_vel.cc:
+	* rcsc/action/act_turn_to_check_ball_vel.h:
+	- removed.
+
+	* rcsc/player/player_agent.cpp:
+	- fixed see synch problems
+	- fixed defect concerned withsynch_mode
+
+	* rcsc/player/visual_effector.cpp:
+	- added strict cycle management
+	- added check of last see time and current time
+
+	* rcsc/action/act_body_neck_to_ball.cc:
+	* rcsc/action/act_body_neck_to_ball.h:
+	* rcsc/action/act_body_neck_to_point.cc:
+	* rcsc/action/act_body_neck_to_point.h:
+	* rcsc/action/act_body_only_to_ball.cc:
+	* rcsc/action/act_body_only_to_ball.h:
+	* rcsc/action/act_body_only_to_point.cc:
+	* rcsc/action/act_body_only_to_point.h:
+	* rcsc/action/act_neck_body_to_ball.cc:
+	* rcsc/action/act_neck_body_to_ball.h:
+	* rcsc/action/act_neck_body_to_point.cc:
+	* rcsc/action/act_neck_body_to_point.h:
+	* rcsc/action/act_neck_only_to_ball.cc:
+	* rcsc/action/act_neck_only_to_ball.h:
+	* rcsc/action/act_neck_only_to_point.cc:
+	* rcsc/action/act_neck_only_to_point.h:
+	* rcsc/action/act_neck_to_relative.cc:
+	* rcsc/action/act_neck_to_relative.h:
+	* rcsc/action/act_normal_view.cpp:
+	* rcsc/action/act_normal_view.h:
+	* rcsc/action/act_wide_view.cpp:
+	* rcsc/action/act_wide_view.h:
+	- integrated to basic_actions.{h,cpp}
+	- removed.
+
+	* rcsc/action/basic_actions.h:
+	* rcsc/action/basic_actions.cpp:
+	- added.
+	- some basic actions are integrated to these files.
+
+	* rcsc/action/act_emergency_change_view.h:
+	* rcsc/action/act_emergency_change_view.cpp:
+	* rcsc/action/act_synch_view.h:
+	* rcsc/action/act_synch_view.cpp:
+	- Act_EmergencyChangeView was integrated to Act_SynchView
+
+	* rcsc/player/body_sensor.h:
+	- now parsing algorithm uses std::sscanf
+
+	* rcsc/player/view_mode.h:
+	- changed all characters of internal enumeration elements to
+	capital letter.
+
+	* rcsc/player/player_agent.cpp (adjustSeeSynchNormalMode):
+	- added new adjust chance when ball is too far from player.
+
+2006-01-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	- updated mejor version to 5.
+
+	* Doxyfile.in (INPUT):
+	- specified input direcoty
+
+	* rcsc/player/ball_object.h:
+	* rcsc/player/player_object.h:
+	* rcsc/player/self_object.h:
+	* rcsc/player/world_model.h:
+	- *_conf variables are renamed to *_count
+	- *Conf() methods are renamed to *Count()
+
+	* rcsc/player/world_model.h:
+	* rcsc/player/world_model.cpp:
+	- added M_teamname member variable to store team name string
+
+	* rcsc/player/player_agent.h:
+	* rcsc/player/player_agent.cpp:
+	- added DebugClient member varable.
+
+	* rcsc/player/debug_client.h:
+	- removed singleton interface.
+
+	* rcsc/trainer/trainer_command.h:
+	* rcsc/trainer/trainer_command.cpp:
+	- type id in TrainerChangePlayerTypeCommand is changed to
+	rcsc::HeteroID.
+
+	* rcsc/trainer/trainer_agent.h:
+	* rcsc/trainer/trainer_agent.cpp:
+	- added Doxygen comments.
+	- cleaned up.
+
+2006-01-04  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/player_manager.h:
+	* rcsc/player/player_manager.cpp:
+	- removed
+
+	* rcsc/coach/coach_manager.h:
+	* rcsc/coach/coach_manager.cc:
+	* rcsc/coach/coach_agent.h:
+	* rcsc/coach/coach_agent.cpp:
+	- CoachManager is integrated to CoachAgent
+	- removed coach_manager.{h,cc}
+
+	* rcsc/player/logger.h:
+	* rcsc/player/logger.cpp:
+	- added Doxygen comments
+
+	* tokyotech/helios_coach.h:
+	* tokyotech/helios_coach.cc:
+	- fixed hetero id variables.
+
+	* rcsc/coach/clang_manager.cpp:
+	* rcsc/coach/coach_config.cpp:
+	* rcsc/coach/cycle_info.cpp:
+	* rcsc/coach/player_change_state.cpp:
+	- changed file extention.
+
+	* rcsc/player/player_intercept.h:
+	* rcsc/player/player_intercept.cpp:
+	* rcsc/player/self_intercept.h:
+	* rcsc/player/self_intercept.cpp:
+	- renamed from intercept_*
+
+	* rcsc/player/localizer.h:
+	* rcsc/player/localizer.cpp:
+	* rcsc/player/localizer_particle.h:
+	* rcsc/player/localizer_particle.cpp:
+	- added Doxygen comments.
+	- self angle estimation using marker is separated as new method.
+	- self localization process is cleaned up by adding subroutines.
+	- LocalizerParticle is removed. instead of them, introduced
+	LocalizerImpl as a Pimpl ideom.
+	- removed localizer_particle.{h,cpp}
+
+	* rcsc/player/localizer.h:
+	- renamed internal struct localize_player_t to PlayerT.
+
+	* rcsc/player/visual_sensor.h:
+	* rcsc/player/visual_sensor.cpp:
+	- reimplemented stream operator using std::copy and
+	std::ostream_iterator.
+	- added '_' suffix to member variables of internal struct
+	- renamed internal struct name. seen_*_t to PlayerT and so on.
+
+2006-01-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/fullstate_sensor.h:
+	* rcsc/player/fullstate_sensor.cpp:
+	- renamed class FullstateSensor to FullStateSensor
+	- added '_' suffix to member variables of internal struct
+
+	* rcsc/action/act_stop_ball.cc:
+	* rcsc/action/act_kick_two_step.cc:
+	* rcsc/action/act_kick_to_relative.cc:
+	* rcsc/action/act_kick_one_step.cc:
+	* rcsc/action/act_kick_multi_step.cc:
+	* rcsc/action/act_hold_ball.cc:
+	* rcsc/action/act_advance_ball.cpp:
+	* rcsc/action/act_clear.cpp:
+	* rcsc/action/act_kick_collide_with_ball.cpp:
+	* rcsc/action/act_pass.cpp:
+	* rcsc/action/act_shoot.cpp:
+	- added kickable check
+
+	* rcsc/player/self_object.h:
+	- renamed member method ballKickable() to isKickable().
+
+	* rcsc/player/ball_object.h:
+	* rcsc/player/ball_object.cpp:
+	* rcsc/player/player_object.h:
+	* rcsc/player/player_object.cpp:
+	* rcsc/player/self_object.h:
+	* rcsc/player/self_object.cpp:
+	- some inline methods were moved to source file.
+
+	* rcsc/player/ball_object.h:
+	* rcsc/player/ball_object.cpp:
+	* rcsc/player/player_object.h:
+	* rcsc/player/player_object.cpp:
+	* rcsc/player/player_config.h:
+	* rcsc/player/player_config.cpp:
+	- renamed gpos to pos
+
+2006-01-02  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/player_agent.cpp (updateCurrentTime):
+	- removed inconvinient error message (action miss message when
+	server cycle stopped mode)
+
+	* rcsc/player/visual_sensor.cpp (parseBall):
+	- removed inconvinient pased distance value check.
+
+	* rcsc/player/player_agent.h:
+	- added SoccerIntentionQueue member variable.
+
+	* rcsc/player/action_effector.h:
+	* rcsc/player/action_effector.cpp:
+	- added WorldModel membar variable as const reference.
+	- removed world arugment from member methods
+	- removed SoccerIntentionQueue member variable and its interface.
+
+	* rcsc/player/stamina_mode.cpp:
+	* rcsc/player/penalty_kick_state.cpp:
+	- changed file extention from .cc
+
+	* rcsc/player/ball_object.h:
+	* rcsc/player/ball_object.cpp:
+	* rcsc/player/player_object.h:
+	* rcsc/player/player_object.cpp:
+	* rcsc/player/self_object.h:
+	* rcsc/player/self_object.cpp:
+	- renamed.
+
+	* rcsc/player/Makefile.am:
+	- renamed object_*.* to *_object.*
+
+2006-01-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/main_coach.cc:
+	* tokyotech/main_player.cc:
+	* rcsc/coach/coach_agent.cpp:
+	* rcsc/player/player_agent.cpp:
+	- changed command line option parse process.
+
+	* rcsc/client/basic_client.h:
+	- return value of doInit() is changed to bool to check parsing
+	status.
+
+	* rcsc/player/fullstate_sensor.h:
+	* rcsc/player/fullstate_sensor.cpp:
+	- added debug purpose print method.
+
+	* rcsc/player/action_effector.h:
+	* rcsc/player/action_effector.cpp:
+	- action filter operations were moved from PlayerAgent
+
+	* rcsc/player/player_agent.h:
+	* rcsc/player/player_agent.cpp:
+	- all action filter operation were moved to ActionEffector.
+	- fullstate printing method was moved to fullstate sensor
+
+	* rcsc/player/Makefile.am:
+	- removed player_manager.*
+
+	* rcsc/player/player_agent.cpp:
+	* rcsc/player/player_manager.h:
+	* rcsc/player/player_manager.cpp:
+	- all implementation codes were moved to PlayerAgentImpl.
+
+2005-12-31  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/client/referee.h:
+	* rcsc/client/referee.h:
+	- commented by Doxygen style
+	- some inline code are moved to source file.
+
+	* rcsc/coach/coach_command.h:
+	* rcsc/coach/coach_command.cpp:
+	* rcsc/player/player_command.h:
+	* rcsc/player/player_command.cpp:
+	* rcsc/trainer/trainer_command.h:
+	* rcsc/trainer/trainer_command.cpp:
+	- separeted some code to source file.
+	- commented by Doxygen style
+
+2005-12-30  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	- option --with-librcsc-prefix is simplified to --with-librcsc
+
+2005-12-28  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/Makefile.am:
+	- removed monitor from SUBDIRS
+
+	* configure.ac:
+	- removed rcsc/monitor/Makefile from AC_CONFIG_FILES
+
+2005-12-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/action_effector.h:
+	* rcsc/player/action_effector.cpp:
+	- added command counter member variable.
+
+	* rcsc/player/player_command.h:
+	* rcsc/trainer/trainer_command.h:
+	* rcsc/coach/coach_command.h:
+	* rcsc/monitor/monitor_command.h:
+	- all CommandType are replayed by librcsc's enumeration.
+	- player commands' static counter variables are removed.
+
+	* rcsc/soccer/:
+	- removed unused direcotry.
+
+	* rcsc/Makefile.am:
+	- removed soccer from SUBDIRS
+
+	* rcsc/client/referee.h:
+	* rcsc/client/referee.cpp:
+	- moved from rcsc/soccer/
+
+	* rcsc/soccer/referee.h:
+	* rcsc/soccer/referee.cpp:
+	- moved to rcsc/client
+
+	* rcsc/player/localizer_particle.cpp:
+	* rcsc/trainer/trainer_agent.cpp:
+	- rcsc/util/random.h is moved to rcsc/random.h
+
+	* configure.ac:
+	- removed rcsc/util/Makefile from config target.
+	- removed check of boost/random.hpp and boost/lexical_cast.hpp
+	- added check of librcsc_net, librcsc_util and librcsc_param
+	- fixed AC_CHECK_LIB for rcsc_util and rcsc_param
+
+	* tokyotech/Makefile.am:
+	- removed -L$(top_srcdir)/rcsc/util and -lhelios_util
+
+	* rcsc/trainer/Makefile.am:
+	- removed -L$(top_srcdir)/rcsc/util and -lhelios_util
+
+	* rcsc/Makefile.am:
+	- removed util from SUBDIRS.
+
+	* rcsc/util/stop_watch.h:
+	* rcsc/util/stop_watch.cpp:
+	* rcsc/util/time_stamp.h:
+	* rcsc/util/time_stamp.cpp:
+	- moved all files to librcsc.
+
+2005-12-26  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/util/bpn1.h:
+	* rcsc/util/random.h:
+	- replaced by librcsc/rcsc/util/*
+
+2005-12-22  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/act_sync_view.cpp:
+	* rcsc/player/body_sensor.cpp:
+	* rcsc/player/visual_effector.h:
+	* rcsc/player/visual_effector.cpp:
+	* rcsc/player/view_mode.h:
+	* rcsc/player/view_mode.cpp:
+	- implemented test version of new sync view mode.
+
+2005-12-21  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/act_dribble.cpp (doKickDashes):
+	- tuned ball controll distance y when player try kick and dashes.
+
+2005-12-20  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	- added option --with-librcsc-prefix to check where librcsc is
+	installed using AC_ARG_WITH.
+	- removed LIBRCSC variable.
+
+2005-12-16  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/param/:
+	- removed.
+	- replaced by librcsc.
+
+	* rcsc/Makefile.am (SUBDIRS):
+	- removed param from SUBDIRS
+
+	* configure.ac:
+	- removed param/Makefile from AC_CONFIG_FILES
+
+2005-12-10  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/client/basic_client.h:
+	- renamed changeWaitInterval() to setIntervalMSec()
+	- changed resetServerAlive() to setServerAliver(bool)
+
+	* rcsc/client/basic_client.h:
+	* rcsc/client/basic_client.cpp:
+	* rcsc/player/debug_client.h:
+	* rcsc/player/debug_client.cpp:
+	- UDPSocket was replaced by librcsc's UDPSocket.
+
+	* rcsc/client/udp_socket.h:
+	- remoded.
+
+2005-12-08  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/soccer/soccer_types.h:
+	- moved to librcsc.
+
+	* rcsc/player/object_self.cpp:
+	- calc_cos_min_max() and calc_sin_min_max() were replaced by
+	AngleDeg's member method.
+
+2005-12-07  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/world_model.h:
+	* rcsc/soccer/referee.h:
+	- changed all "Playmode" string to "PlayMode"
+	- renamed enum LocalPlayMode to PlayModeType
+	- renamed getPlaymodeBase to getPlayModeType
+
+	* rcsc/param/server_param.cpp:
+	- added missing include cmath to fix gcc-3.4 compilation
+	problem.
+
+	* rcsc/client/udp_socket.h:
+	- added missing include cerrono to fix gcc-3.4 compilation
+	problem.
+
+2005-12-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/util/time_stamp.h:
+	- added static utility method to calculate a raw time difference.
+
+	* rcsc/util/stop_watch.h:
+	* rcsc/util/stop_watch.cpp:
+	- removed class MSecDiff.
+
+	* configure.ac:
+	- AC_CONFIG_HEADER was replaced by AC_CONFIG_HEADERS.
+
+2005-12-02  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/soccer/soccer_math.h:
+	* rcsc/soccer/soccer_math.cc:
+	* rcsc/util/math_utils.h:
+	* rcsc/util/math_utils.cpp:
+	- removed
+
+	* rcsc/soccer/soccer_math.h:
+	- some geometric series utilities were replaed by librcsc's
+	generic functions.
+
+2005-12-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/soccer/soccer_math.h:
+	* rcsc/soccer/soccer_math.cc:
+	- removed almost all things.
+	- ported to librcsc.
+
+	* rcsc/util/Makefile.am:
+	* rcsc/util/math_utils.h:
+	* rcsc/util/math_utils.cpp:
+	- removed from package
+
+2005-11-29  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/soccer/game_time.h:
+	* rcsc/soccer/game_time.cpp:
+	- ported to librcsc.
+
+	* configure.ac:
+	- fixed problem about AC_ARG_ENABLE.
+
+	* tokyotech/act_intercept.h:
+	* tokyotech/act_intercept.cc:
+	- removed.
+
+	* newhope/Makefile.am:
+	* newhope/main_player.cpp:
+	* newhope/newhope_player.cpp:
+	* newhope/newhope_player.h:
+	* newhope/player.conf:
+	* newhope/start.sh:
+	- added new team.
+
+	* tokyotech/act_advance_ball.h:
+	* tokyotech/act_advance_ball.cc:
+	* tokyotech/act_ckear_ball.h:
+	* tokyotech/act_clear_ball.cc:
+	* tokyotech/act_dribble.h:
+	* tokyotech/act_dribble.cc:
+	* tokyotech/act_neck_only_to_goalie_or_scan.h:
+	* tokyotech/act_neck_only_to_goalie_or_scan.cc:
+	* tokyotech/act_pass.h:
+	* tokyotech/act_pass.cc:
+	* tokyotech/act_shoot.h:
+	* tokyotech/act_shoot.cc:
+	* tokyotech/intention_dribble.h:
+	* tokyotech/intention_dribble.cpp:
+	* tokyotech/intention_kick.h:
+	* tokyotech/intention_kick.cc:
+	- moved to rcsc/action/
+
+	* configure.ac:
+	* tokyotech/Makefile.am:
+	- added '--enable-tokyotech' option
+	- added global shell variable TOKYOTECH
+
+2005-11-24  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* debug_macro.h:
+	- removed.
+
+	* rcsc/soccer/game_time.h:
+	* rcsc/soccer/game_time.cpp:
+	- cleaned up the code.
+
+	* rcsc/soccer/monitor_protocol.h:
+	- replaced by librcsc's rcsc/rcg/types.h
+
+	* rcsc/geom/*:
+	- removed and replaced by librcsc.
+
+2005-11-23  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/geom/rectangle_2d.h:
+	* rcsc/geom/rectangle_2d.cpp:
+	- renamed class name to Rect2D.
+
+2005-11-22  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/geom/rectangle_2d.h:
+	* rcsc/geom/rectangle_2d.cpp:
+	- reimplemented. but still need to improve.
+
+	* rcsc/geom/Makefile.am:
+	- triangle_2d.{h,cpp} were replaced by librcsc.
+
+2005-11-18  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/geom/straight_line_2d.h:
+	* rcsc/geom/straight_line_2d.cpp:
+	- removed and replaced by librcsc.
+
+2005-11-16  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/soccer/playmode.h:
+	- removed.
+
+	* rcsc/geom/*:
+	- introduced namespace rcsc.
+
+	* rcsc/geom/angle_deg.h:
+	* rcsc/geom/angle_deg.cpp:
+	* rcsc/geom/vector_2d.h:
+	* rcsc/geom/vector_2d.cpp:
+	- removed and replaced by librcsc.
+
+	* configure.ac:
+	- added library check for librcsc.
+
+2005-10-11  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/act_set_play_free_kick.cc (isKicker):
+	- fixed invalid kicker judgement for field players when. playmode
+	is after goalie catch.
+
+	* tokyotech/formation.h:
+	* tokyotech/formation.cpp:
+	- replaced by latest source file from soccerwindow2.
+
+2005-07-06  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/player_config.h:
+	* rcsc/player/player_config.cpp:
+	* rcsc/player/logger.h:
+	- added ROLE as LEVEL15
+
+	* rcsc/player/world_model.cpp (checkUnknownPlayers):
+	- changed minimal distance threshold
+
+	* tokyotech/helios_player.cpp (doAction):
+	- changed role creation point. now role is created every action
+	decetion.
+
+	* rcsc/player/world_model.cpp (refreshObjectMatrix):
+	- changed kickable player check policy. now players' accuracy
+	count is checked.
+
+2005-07-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/world_model.h:
+	- added option to check accuracy count of other players for the
+	player reference.
+
+	* tokyotech/helios_player.cpp (doAction):
+	- Act_PreProcess is moved from all roles.
+
+	* tokyotech/strategy_helios.h:
+	* tokyotech/strategy_helios.cpp:
+	- removed.
+
+	* rcsc/player/object_self.cpp (updateAfterSense):
+	- fixed collision estimation.
+
+2005-07-04  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/action/act_kick_two_step.cc (simulate_two_kick):
+	- fixed bug that opponent is not checked for edge target.
+
+	* tokyotech/role_defensive_midfielder.h:
+	* tokyotech/role_defensive_midfielder.cpp:
+	* tokyotech/role_offensive_midfielder.h:
+	* tokyotech/role_offensive_midfielder.cpp:
+	* tokyotech/role_defensive_half.h:
+	* tokyotech/role_defensive_half.cpp:
+	* tokyotech/role_offensive_half.h:
+	* tokyotech/role_offensive_half.cpp:
+	- renamed.
+
+	* rcsc/player/player_config.h:
+	- changed team configuration reference parameter from
+	strategyFile() to configDir(). library user can specify the config
+	file directory using this.
+	- renamed roleNumber() to playerNumber()
+
+	* tokyotech/formation_param.h:
+	* tokyotech/soccer_strategy.h:
+	- removed inconvinience classes.
+
+	* tokyotech/strategy.h:
+	* tokyotech/strategy.cpp:
+	- added
+
+2005-07-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/util/bpn1.h:
+	* tokyotech/formation.h:
+	* tokyotech/formation.cpp:
+	- imported from soccerwindows
+
+	* rcsc/player/intercept_table.cpp (predictTeammate):
+	(predictOpponent):
+	- added kickable player check before the estimation loop
+
+	* rcsc/player/action_effector.h:;
+	- added getter method for each command object pointer.
+
+	* rcsc/param/server_param.h:
+	- changed argument and return value of some utilities
+
+	* rcsc/action/actb_intercept.h:
+	* rcsc/action/actb_intercept.cpp:
+	- added.
+
+	* rcsc/player/intercept_player.h:
+	* rcsc/player/intercept_player.cpp:
+	- added predictFinal to estimate final reach cycle
+
+2005-07-02  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/act_go_to_static_ball.cc:
+	- fixed angle check
+
+	* rcsc/action/act_go_to_point.h:
+	* rcsc/action/act_go_to_point.cc:
+	- removed dodge option
+	- merged from dev-2004
+
+	* rcsc/player/object_ball.h:
+	- added inertia movement calculator utility methods.
+
+	* rcsc/player/object_self.h:
+	* rcsc/player/object_self.cpp:
+	- added safety dash power check method.
+
+	* rcsc/player/audio_codec.h:
+	* rcsc/player/audio_codec.cpp:
+	- implemented new ball info codec.
+
+	* rcsc/player/world_model.h:
+	* rcsc/player/world_model.cpp:
+	- to reduce the compilation time, member variables of external
+	modules are changed to pointer and instance moved to source code.
+
+	* rcsc/player/localizer_particle.h:
+	* rcsc/player/localizer_particle.cpp:
+	* rcsc/player/visual_sensor.h:
+	* rcsc/player/visual_sensor.cpp:
+	- added seen_vel flag to seen_movable_t
+	- removed CHNG_ERR constant.
+
+2005-07-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/player/kick_table.h:
+	* rcsc/player/kick_table.cpp:
+	- just added. not fully implemented yet.
+
+	* rcsc/player/world_model.h:
+	- renamed some ambiguous interface name
+
+	* rcsc/player/intercept_self.h:
+	* rcsc/player/intercept_self.cpp:
+	* rcsc/player/intercept_player.h:
+	* rcsc/player/intercept_player.cpp:
+	* rcsc/player/intercept_table.h:
+	* rcsc/player/intercept_table.cpp:
+	- added.
+
+2005-06-30  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/param/player_type.h
+	* rcsc/param/player_type.cpp:
+	- addes dash distance table
+	- PlayerTypeSet becomes singleton.
+
+	* rcsc/player/intercept/:
+	* rcsc/player/predictor/:
+	- removed.
+
+	* rcsc/player/intercept/interception.h:
+	* rcsc/player/intercept/interception.cpp:
+	- moved to player direcotry
+
+
+	* rcsc/action/:
+	- moved from player directory.
+
+	* rcsc/player/player_agent.h:
+	* rcsc/player/player_agent.cpp:
+	- introduced Pimpl ideom to reduce the compilation time.
+
+	* rcsc/player/visual_sensor.h:
+	* rcsc/player/visual_sensor.cpp:
+	* rcsc/player/world_model.h:
+	* rcsc/player/world_model.cpp:
+	- renamed some variables and methods
+
+	* rcsc/player/debug_client.h:
+	* rcsc/player/debug_client.cpp:
+	* rcsc/player/soccer_viewer.h:
+	* rcsc/player/soccer_viewer.cpp:
+	- renamed file and class.
+
+	* rcsc/player/player_config.h:
+	* rcsc/player/player_config.cpp:
+	* rcsc/player/logger.h:
+	* rcsc/player/logger.cpp:
+	- implemented new logging system.
+
+2005-06-29  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/client/basic_client.h:
+	* rcsc/client/basic_client.cpp:
+	* rcsc/player/player_agent.h:
+	* rcsc/player/player_agent.cpp:
+	* rcsc/trainer/trainer_agent.h:
+	* rcsc/trainer/trainer_agent.cpp:
+	* rcsc/coach/coach_agent.h:
+	* rcsc/coach/coach_agent.cpp:
+	- reimplemented using select().
+	- cleaned up the code significantly.
+
+	* rcsc/util/time_stamp.h:
+	* rcsc/util/time_stamp.cpp:
+	- separeted from stop_watch
+
+	* rcsc/parser/:
+	- removed.
+	- some modules are moved to each client module directory.
+
+	* debug_macro.h:
+	- removed
+
+2005-06-28  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* rcsc/:
+	* tokyotech/:
+	- totally restructured.
+
+2004-06-30  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/act_keep_shoot_chance.cc (execute):
+	- tuned pass target threshold parameter
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	- added new position condition
+
+	* tokyotech/act_cross_to_center.cc (create_target):
+	- tuned score calculation paramter
+
+	* tokyotech/strategy.conf:
+	- tuned some parameters
+
+	* tokyotech/act_keep_shoot_chance.cc (execute):
+	- turn on goal post target dribble
+
+	* tokyotech/role_center_back.cc (doBasicMove):
+	- tuned intercept parameter
+
+	* tokyotech/role_offensive_midfielder.cc (doMove):
+	(doOffensiveMove):
+	(doShootAreaMove):
+	- tuned positin
+
+2004-06-29  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_action/act_before_kick_off.cc (execute):
+	- halfTime parameter is hand coded.
+
+2004-06-28  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/act_pre_process.cc (execute):
+	- changed ball accuracy threshold for goalie.
+
+	* tokyotech/role_offensive_midfielder.cc (doMove):
+	(doShootAreaMove):
+	(doOffensiveMove):
+	- tuned target point parameter
+
+	* tokyotech/act_set_play_free_kick.cc (execute):
+	* tokyotech/act_set_play_kick_in.cc (execute):
+	- changed condition of kicker selection
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	- tuned target position parameter
+
+	* tokyotech/act_dribble.cc (doKickDashes):
+	- added special buffer to stamina
+
+2004-05-05  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/act_intercept.cc:
+	* tokyotech/act_dribble.cc (doDodge):
+	* tokyotech/helios_coach.h:
+	fixed bug of method of player type parameter.
+
+2004-05-04  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/act_pass.cc (create_direct_pass):
+	changed direct pass end speed
+
+	* tokyotech/act_kick_to_corner.cc (execute):
+	changed target point.
+
+	* tokyotech/role_side_back.cc (doBlockSideAttacker):
+	add new stamina rule
+
+	* tokyotech/act_pass.cc (create_lead_pass):
+	added limitation to direct pass receive point.
+
+	* player_agent/player_agent.cpp (conserve_dash_power):
+	changed ceil to rint.
+
+	* tokyotech/role_side_forward.cc (doMiddleAreaKick):
+	moved pass rule.
+
+	* tokyotech/act_keep_shoot_chance.cc (execute):
+	added new rule to dribble to opponent goal.
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	changed target point correction condition
+	(doShootAreaMove):
+	fixed typo
+	(doShootAreaMove):
+	changed target point parameter
+	(doShootAreaKick):
+	added new rule to execute cross pass
+
+	* player_action/act_kick_two_step.cc (simulate_two_kick):
+	changed sub-target parameter
+
+	* tokyotech/act_dribble.cc (doKickDashes):
+	changed collision buffer.
+	(doDodge):
+	changed pitch buffer.
+	added new target point assign algorithm.
+
+	* tokyotech/role_side_forward.cc (doMiddleAreaKick):
+	changed pass decision parameter.
+
+	* tokyotech/act_shoot.cc (search):
+	changed parameter for goalie.
+
+	* tokyotech/intention_dribble.cpp:
+	added new turn_neck rule to check opponent goalie.
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	fixed bug of target point value
+
+	* tokyotech/role_center_forward.cc (doMiddleAreaKick):
+	changed pass decision threshold
+
+	* player_agent/world_model.cpp (updateOffsideLine):
+	added new update condition
+
+	* tokyotech/act_kick_to_corner.cc (execute):
+	changed end speed parameter.
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	added new target point.
+	fixed missing condition for dash power
+
+	* tokyotech/act_shoot.cc (search):
+	changed minimal shoot speed to max enable speed by one kick.
+
+	* tokyotech/role_side_forward.cc (doBasicKick):
+	changed action when stamina is exhausted
+
+	* tokyotech/act_shoot.cc (search):
+	changed opponent field player's reach cycle buffer parameter.
+
+	* tokyotech/intention_dribble.cpp (execute):
+	added new rule to check opponent goalie.
+
+	* tokyotech/role_side_back.cc (doDangerAreaMove):
+	added new condition for intercept.
+
+	* player_action/act_emergency_change_view.cpp (execute):
+	fixed bug about see time stamp
+
+	* player_agent/player_manager.cpp (isDecisionTiming):
+	changed decision msec limit parameter
+
+	* tokyotech/act_goalie_basic_move.cc (getTargetPoint):
+	changed target point y when ball is near to goal line
+
+	* tokyotech/act_dribble.cc (isDodgeSituation):
+	changed considerd sector size.
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	added new rule to apart from blocker.
+
+	* tokyotech/role_side_back.cc (doBlockSideAttacker):
+	added new rule.
+
+	* tokyotech/role_offensive_midfielder.cc (doShootAreaMove):
+	added Logger output.
+	added new rule.
+
+	* tokyotech/role_side_back.cc (doDangerAreaMove):
+	changed turn_neck tactics.
+
+	* generic_utils/logger.h:
+	* generic_utils/logger.cpp:
+	removed directive 'ifdef DEBUG'
+
+	* tokyotech/role_side_back.cc (doDangerAreaMove):
+	added new intercept rule.
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	added new rule of target point and dash power for very good
+	chance
+
+2004-05-03  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* coach_agent/coach_manager.cc (updateCurrentTime):
+	disabled ifdef directive for DEBUG macro.
+
+	* tokyotech/act_goalie_basic_move.cc (getTargetPoint):
+	changed goallie poisitioning parameter 'edge_buf'.
+
+	* tokyotech/act_clear_ball.cc (execute):
+	added condition to swich kick mode when goal_kick_?
+
+	* tokyotech/act_intercept.cc:
+	fixed defect of debug ougput
+
+	* player_agent/world_model.cpp:
+	fixed defect of DEBUG macro
+
+	* player_agent/visual_sensor.cpp:
+	added missing include
+
+	* generic_utils/logger.h:
+	* generic_utils/logger.cpp:
+	added DEBUG macro to switch Logger output completely
+	(flush):
+	disabled DEBUG macro.
+
+	* player_agent/player_manager.cpp (isDecisionTiming):
+	changed wait limit msec.
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	added new targe point rule to correct receive point.
+
+	* tokyotech/act_keep_shoot_chance.cc (execute):
+	changed condition parameter for pass
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	changed face_point.y parameter.
+
+	* tokyotech/act_intercept.cc (estimate_active_close):
+	changed control margin buffer
+	(estimate_active_close):
+	changed last ball distance check buffer.
+	(estimate_one_dash):
+	added buffer to control area margin
+	(estimate_active):
+	changed condition of success.
+
+2004-05-02  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/act_set_play_goal_kick.cc (execute):
+	added time info to debug output.
+
+	* player_agent/player_manager.cpp (isDecisionTiming):
+	changed wait limit msec.
+
+	* sensor/communication_sensor.h:
+	* sensor/communication_sensor.cc:
+	* player_agent/world_model.h:
+	* player_agent/world_model.cpp:
+	added variables and methods to manage audio goalie info.
+
+	* tokyotech/act_pre_process.cc (execute):
+	changed receive intention process.
+	now, all intention execution is doen from queued intention.
+
+	* tokyotech/act_intercept.cc (estimate_passive):
+	changed limit of loop max_cycle.
+	(estimate_active):
+	changed minimal turn margin parameter.
+
+	* tokyotech/act_basic_move.cc (execute):
+	changed recover mode off rule.
+
+	* tokyotech/act_intercept.cc (estimate_active_close):
+	added very strict turn_margin threshold
+
+	* tokyotech/intention_receive.cc (execute):
+	added enfoce interception rule.
+
+	* tokyotech/act_pass.cc (execute):
+	added target buffer vector
+
+	* tokyotech/act_intercept.cc (execute):
+	removed condtion of command_param check.
+	(simulate_self_one_step):
+	added new argument 'do_turn' to strictly check whether turn is
+	done.
+	(estimate_active_close):
+	estimate_one_dash is moved to estimate_active
+	(estimate_active_close):
+	added new argument 'dash_only'
+
+	* tokyotech/act_basic_move.cc (execute):
+	added new rule for dash power.
+	changed recover mode dash power.
+
+	* tokyotech/act_intercept.cc (estimate_one_dash):
+	added Logger output.
+
+	* player_agent/soccer_viewer.cpp:
+	changed printer format.
+
+2004-05-01  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/role_side_forward.cc (doShootAreaMove):
+	added new target x.
+	commented out oen target rule.
+
+	* player_agent/player_manager.cpp (updateCurrentTime):
+	added condition to reduce useless debug output.
+
+	* generic_utils/stop_watch.cc:
+	* generic_utils/stop_watch.cpp:
+	renamed extention.
+
+	* tokyotech/act_basic_move.cc (execute):
+	changed ball owner condition.
+
+	* tokyotech/act_press.cc (execute):
+	changed condition of ball owner.
+
+	* tokyotech/act_keep_shoot_chance.cc:
+	added pass check before dribble.
+
+	* tokyotech/role_side_forward.cc (doDribbleAttack):
+	changed parameter of normal dribble target.
+
+	* player_action/act_kick_two_step.cc (is_opp_kickable):
+	added support of player's velocity.
+
+	* tokyotech/act_goalie_free_kick.cc (doKick):
+	changed parameter for cheking distance from our goal
+
+	* tokyotech/role_center_back.cc (doBasicMove):
+	changed parameter for interception.
+
+	* tokyotech/act_dribble.cc (doKickTurnsDash):
+	commented out addtion of one dash move vector.
+
+	* tokyotech/role_offensive_midfielder.cc (doMove):
+	changed BA_DribbleAttack area move rule.
+	(doDefensiveMove):
+	changed default move rule to Act_BasicMove.
+
+	* tokyotech/act_dribble.cc (doAction):
+	added check for near opponent when only turn.
+
+	* tokyotech/role_side_back.h:
+	* tokyotech/role_side_back.cpp:
+	removed member method 'doDefensiveMove'
+
+	* player_agent/world_model.h:
+	* player_agent/world_model.cpp:
+	added new member variable 'M_setplay_count' to count setplay
+	playmode cycles.
+
+	* tokyotech/act_attacker_offensive_move.cc (execute):
+	changed condition parameter for interception.
+
+2004-04-30  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/player_manager.cpp:
+	removed some useless debug output.
+
+	* tokyotech/role_side_forward.cc (doDribbleAttack):
+	changed normal target.
+	(doShootAreaKick):
+	changed cut_in_point.
+	(doDribbleAttack):
+	fixed bug that the value of target is not allocated.
+
+	* player_agent/player_agent.cpp (decideAction):
+	added no initialized alarm count.
+
+	* player_action/act_emergency_change_view.cpp (execute):
+	added support for synch_mode.
+
+	* player_agent/player_agent.cpp (adjustSeeSynchNormalMode):
+	added self.setViewMode after send command.
+	(adjustSeeSynchSynchMode):
+	added self.setViewMode after send command.
+	(adjustSeeSynchNormalMode):
+	fixed bug of predicate. 7&&' is changed to '||'.
+
+	* coach_agent/coach_agent.h:
+	* coach_agent/coach_agent.cc:
+	added support for synch_mode.
+
+	* tokyotech/act_dribble.cc (doAction):
+	added missing 'return' statement.
+
+	* tokyotech/act_intercept.cc (execute):
+	added missing 'return' statement.
+
+	* tokyotech/act_goalie_chase_ball.cc (execute):
+	fixed bug of goalie interception area chek.
+
+	* player_agent/player_agent.h:
+	added new server message type Server_Hear_Self.
+
+	* player_agent/player_agent.cpp:
+	added analyze of self audio.
+
+	* player_agent/player_agent.cpp (sense):
+	added missing analyzeHearPlayer method.
+
+	* coach_agent/coach_agent.cc (sense):
+	commented out the world model update operation.
+
+	* soccer_basic/soccer_math.h (inertia_n_step_travel):
+	added.
+	(inertia_n_step_point):
+	added.
+	(round_kick_dist):
+	added.
+	(wind_effect):
+	added.
+
+	* predictor/.cvsignore:
+	* predictor/intercept_base.h:
+	* predictor/intercept_base.cpp:
+	* predictor/intercept_info.h:
+	* predictor/intercept_rough.h:
+	* predictor/intercept_rough.cpp:
+	* predictor/intercept_semi_strict.h:
+	* predictor/intercept_semi_strict.cpp:
+	* predictor/intercept_strict.h:
+	* predictor/intercept_strict.cpp:
+	added.
+
+	* configure.ac:
+	added new directory 'predictor'.
+
+	* tokyotech/act_tactical_change_view.cpp (execute):
+	added support of playmode AfterGoal_
+
+2004-04-29  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* tokyotech/act_pre_process.cc (execute):
+	added change_view action when ball search.
+
+	* player_action/act_scan_field.cc (execute):
+	added check of current self view width before execution of
+	Act_WideView.
+
+	* player_agent/visual_effector.cpp (canChangeViewTo):
+	added check whether current see is received.
+
+	* player_agent/player_agent.cpp (decideAction):
+	visual().setNewViewMode() is moved from effector.makeCommand.
+	(doChangeView): added check whether current see is received.
+
+	* player_action/act_emergency_change_view.h:
+	* player_action/act_emergency_change_view.h:
+	added.
+
+	* tokyotech/act_tactical_change_view.h:
+	* tokyotech/act_tactical_change_view.h:
+	added.
+
+	* player_agent/action_effector.h:
+	removed M_view_width member variable.
+
+	* player_agent/action_effector.cpp (makeCommand):
+	visual().setNewViewMode() is moved from setChangeView to
+	makeCommand.
+
+	* player_agent/player_manager.cpp (isDecisionTiming):
+	added check operation for see arrival estimation.
+
+	* player_action/act_before_kick_off.cc:
+	changed coding style when used __FILE__ macro in formated output.
+	"%s", __FILE__ -> "%s" ,__FILE__
+
+	* tokyotech/act_danger_area_tackle.cc (execute):
+	fixed missing ','.
+	this causes debug output error...
+
+	* player_action/act_neck_only_field_scan_simple.h:
+	* player_action/act_neck_only_field_scan_simple.cc:
+	removed.
+
+	* generic_utils/logger.h:
+	* player_agent/player_config.h:
+	* player_agent/player_config.cpp:
+	added debug_goalie option.
+
+	* generic_utils/logger.cpp (flush):
+	bugs of fputs???
+	changed output function from fputs to fwrite.
+
+	* tokyotech/act_dribble.cc (getAvoidAngle):
+	fixed defect that score is not updated when update least
+	congestion point.
+
+	* player_agent/soccer_viewer.h:
+	* player_agent/soccer_viewer.cpp:
+	renamed extention.
+	cleaned up the class interface.
+	added Doxygen comments.
+
+	* player_action/act_go_to_point.cc (get_recovery_save_power):
+	changed stamina buffer from 1.0 to 3.0.
+
+	* player_agent/localizer_particle.cpp (generateParticles):
+	removed old code.
+
+2004-04-28  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/action_effector.cpp (makeCommand):
+	added tackling check for dummy command.
+
+	* generic_utils/stop_watch.h:
+	changed default constructor's operation.
+	default value is set to negative value.
+
+	* player_action/Makefile.am:
+	removed act_base.*
+
+	* player_action/act_base.h:
+	* player_action/act_base.cc:
+	removed file.
+
+	* player_action/act_base.h:
+	* player_action/act_base.cc:
+	removed Act_Say.
+	removed Act_Pointto.
+	removed Act_Attentionto.
+	removed Act_Catch.
+	removed Act_Dash.
+	removed Act_Tackle.
+
+	* player_agent/player_agent.cpp (doChangeView):
+	added see synch check for new view width.
+
+	* player_action/act_base.h:
+	* player_action/act_base.cpp:
+	removed Act_TurnNeck.
+	removed Act_ChangeView.
+
+	* player_agent/action_effector.cpp (makeCommand):
+	done commmand is moved to before say command.
+
+	* player_action/act_base.h:
+	* player_action/act_base.cc:
+	removed Act_Turn.
+	removed Act_Kick.
+	removed Act_Move.
+
+	* tokyotech/soccer_role.h:
+	* tokyotech/soccer_strategy.h:
+	moved from 'player_agent'
+
+	* tokyotech/helios_player.h:
+	several member variables and method are moved from player_agent.*
+
+	* player_agent/player_agent.h:
+	* player_agent/player_agent.cpp:
+	moved several method to concrete player class.
+
+	* tokyotech/Makefile.am:
+	* tokyotech/helios_player.h:
+	* tokyotech/helios_player.cpp:
+	added concrete player agent class.
+
+	* player_action/soccer_action.h:
+	* player_action/act_base.h:
+	* player_action/act_base.cc:
+	moved from 'player_agent' directory.
+
+	* player_agent/player_agent.cpp (analyzeServerParam):
+	addec synch_mode check to change alarm interval.
+
+2004-04-27  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/action_effector.cpp (queuedNextViewWidth):
+	added new interface to get queued action info.
+
+	* player_agent/visual_effector.cpp (setNewViewMode):
+	added new method to calculate cycles till next see.
+
+	* player_agent/player_agent.cpp (adjustSeeSynchSynchMode):
+	added synch_mode support.
+
+	* player_agent/object_player.cpp (updateBySee):
+	fixed defect of Logger argument.
+
+	* player_agent/player_agent.h:
+	* player_agent/player_agent.cpp:
+	removed updateViewMode method because same process is done in
+	ActionEffector::makeCommand method.
+
+	* player_agent/player_command.h:
+	changed some member variables and interface.
+
+	* player_agent/action_effector.cpp (makeCommand):
+	added direct effect set to change_view, pointto and attentionto.
+
+	* player_agent/world_model.h:
+	added getSelf method to access SelfObject directly.
+
+	* player_action/act_normal_view.h:
+	* player_action/act_normal_view.cpp:
+	* player_action/act_synch_view.h:
+	* player_action/act_synch_view.cpp:
+	* player_action/act_wide_view.h:
+	* player_action/act_wide_view.cpp:
+	added new action.
+
+	* soccer_param/config_file_reader.h:
+	* soccer_param/config_file_reader.cpp:
+	renamed extention.
+	commented out some debug outputs.
+	fixed coding style.
+	added Doxygen comments.
+
+	* player_agent/localizer.h:
+	* player_agent/localizer.cpp:
+	renamed extention.
+	fixed coding style.
+	added Doxygen comments
+
+	* player_agent/world_mode.h:
+	* player_agent/world_model.cpp:
+	renamed extention.
+	debug output is replared to Logger.
+	fixed coding style.
+	added Doxygen comments
+
+2004-04-26  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/object_player.h:
+	* player_agent/object_player.cpp:
+	renamed extention.
+	fixed coding style.
+	added Doxygen comments.
+
+	* player_agent/object_ball.h:
+	* player_agent/object_ball.cpp:
+	renamed extention.
+	fixed coding style.
+	added Doxygen comments.
+
+	* player_agent/player_manager.h:
+	* player_agent/player_manager.cpp:
+	renamed class.
+	fixed coding style.
+	added Doxygen comments.
+
+	* player_agent/game_manager.h:
+	* player_agent/game_manager.cc:
+	renamed to player_manager.*
+
+	* player_agent/player_agent.h:
+	* player_agent/player_agent.cpp:
+	the enum of ServerMessage is moved to private.
+
+
+2004-04-25  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/player_agent.cpp:
+	added uniform number check to ensure server connection.
+	(doCommunication): added message length check.
+
+	* player_agent/player_config.h:
+	* player_agent/player_config.cpp:
+	renamed some log option.
+
+	* configure.ac:
+	added --enable-debug option.
+	This swich enable us to select to define the macro 'DEBUG'.
+
+	* player_agent/player_config.h:
+	* player_agent/player_config.cpp:
+	added logger interface.
+
+	* generic_utils/logger.h:
+	* generic_utils/logger.cpp:
+	added soccer debug swithes declaration.
+	removed bitset.
+
+	* generic_utils/test_logger.cpp
+	added.
+
+	* geom2d/angle_deg.h:
+	renamed method atan_deg2 to atan2_deg.
+
+	* geom2d/vector_2d.h:
+	changed argument of invalid constructio method from bool to
+	InvalidType.
+	clean up several method implementation.
+
+	* geom2d/angle_deg.h:
+	renamed 'Sin, Cos, Tan' to 'sin, cos, tan'.
+
+	* player_agent/soccer_action.h:
+	* player_agent/soccer_role.h:
+	* player_agent/soccer_intention.h:
+	changed argument of constructor and execute interface.
+
+2004-04-24  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_action/act_intercept.new.h:
+	* player_action/act_intercept.new.cc:
+	* player_action/act_intercept.old.h:
+	* player_action/act_intercept.old.cc:
+	removed.
+
+	* soccer_basic/referee.h:
+	* soccer_basic/referee.cpp:
+	renamed class name.
+	added new playmode 'AfterGoal_'.
+
+2004-04-23  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/Makefile.am:
+	* player_agent/fullstate_sensor.h:
+	* player_agent/fullstate_sensor.cpp:
+	moved from sensor directory.
+
+	* sensor/Makefile.am:
+	* sensor/fullstate_sensor.h:
+	* sensor/fullstate_sensor.cc:
+	removed.
+
+	* player_agent/player_config.h:
+	* player_agent/player_config.cpp:
+	added debug switches.
+
+	* player_agent/player_agent.h:
+	added decision making methods.
+	* player_agent/player_agent.cpp (decideAction):
+	added decision making methods for each effector.
+	separated action decision.
+	(outputDebug):
+	added new method to clean up the code.
+
+	* player_agent/action_effector.cpp (setPointto):
+	renamed argment 'dir' to 'rel_dir'.
+
+	* player_agent/player_command.h:
+	renamed variable M_dir to M_rel_dir.
+
+	* player_agent/player_agent.h:
+	* player_agent/player_agent.cpp:
+	added basic actions
+
+	* player_agent/visual_effector.h:
+	* player_agent/visual_effector.cpp:
+	renamed some method.
+
+	* generic_utils/logger.h:
+	* generic_utils/logger.cpp:
+	changed stream variable from ofstream to FILE* to improve output
+	performance.
+
+2004-04-22  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* generic_utils/logger.h:
+	* generic_utils/logger.cpp:
+	fixed bug about global variable 'g_str'.
+	This causes a important bug.
+	not used global variable for logger.
+
+	* player_agent/visual_effector.h:
+	* player_agent/visual_effector.cpp:
+	added alpha version interface.
+
+	* soccer_param/Makefile.am:
+	added external library for testing program.
+
+	* player_agent/object_self.h:
+	added new method 'dashRate'
+
+	* player_agent/player_agent.h:
+	* player_agent/player_agent.cpp:
+	added basic action.
+
+	* soccer_param/player_type.h:
+	* soccer_param/player_type.cpp:
+	* soccer_param/player_param.h:
+	* soccer_param/player_param.cpp:
+	* soccer_param/server_param.h:
+	* soccer_param/server_param.cpp:
+	renamed extention.
+	fixed coding style.
+	add several utility methods.
+
+	* player_agent/act_see_step_adjustment.h:
+	* player_agent/act_see_step_adjustment.cc:
+	removed.
+
+2004-04-21  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/action_effector.cpp:
+	renamed.
+	support new command counter.
+
+	* player_agent/player_command.h:
+	* player_agent/player_command.cpp:
+	introduce new command counter method using static variable.
+
+	* player_agent/player_agent.cpp (sense):
+	several update process is moved to analyze*.
+	This means player update internal model immediately when message arrived.
+
+	* player_agent/localizer_particle.h:
+	* player_agent/localizer_particle.cpp:
+	renamed file name & class name.
+	fixed coding style.
+
+	* tokyotech/Makefile.am:
+	add noinst_SCRIPTS and noinst_DATA.
+
+	* player_agent/player_agent.cpp:
+	renamed.
+
+	* player_agent/player_agent.h:
+	split decideAction.
+
+	* player_agent/visual_effector.cpp (getNextTiming):
+	add support method.
+
+	* player_agent/object_self.h:
+	change the interface name 'vwidth' and 'vquality' to 'viewWidth'
+	and 'viewQuality'.
+
+	* player_agent/visual_effector.cpp (willCome):
+	add new method.
+
+	* player_agent/visual_effector.h:
+	renamed 'WidthType' to 'SynchType'
+
+	* player_agent/visual_effector.cpp:
+	changed name of member variable 'M_last_see_count' to 'M_current_see_count'
+
+	* player_agent/visual_sensor.h:
+	* player_agent/visual_sensor.cpp:
+	moved from 'sensor'.
+
+2004-04-20  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/view_mode.h:
+	* player_agent/view_mode.cpp:
+	moved from 'soccer_basic' and changed file name from 'player_view_mode'.
+
+2004-04-19  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/player_command.h:
+	* player_agent/player_command.cpp:
+	moved from 'soccer_basic' to 'player_agent'
+
+	* player_agent/player_agent.h:
+	* player_agent/player_agent.cc:
+	added initialized check variable.
+
+	* sensor/audio_codec.h:
+	* sensor/audio_codec.cpp:
+	changed class name from 'CommunicationCoder' to 'AudioCodec'
+	changed file name from 'communication_coder.{h,cc}' to 'audio_codec.{h,cpp}'
+
+	* player_agent/player_agent.cc:
+	add Doxygen comment.
+	fixed coding style.
+	removed 'using namespace std'
+
+	* player_agent/game_manager.cc (isDecisionTiming):
+	add the condition for new see synchronization.
+
+	* player_agent/player_agent.h:
+	add new interface finalize().
+
+	* basic_client/basic_client.h:
+	change accesibility of virtual method to protected.
+
+	* basic_client/basic_client.cc (run):
+	moved to source file.
+
+2004-04-18  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* player_agent/player_agent.h:
+	add compiler firewall PlayerAgentImpl, but not implemented yet.
+
+	* sensor/visual_sensor.h:
+	* sensor/visual_sensor.cc:
+	add Player_Low_Mode to detect view quality.
+	removed 'using namespace std'.
+
+	* player_agent/soccer_intention.h:
+	changed WorldModel to forward declaration.
+	remove useless header includes.
+
+	* tokyotech/act_*.cc:
+	temporary intention pointer variable is changed to instance.
+
+	* player_agent/player_config.h:
+	add constant enum to manage debug output flags.
+
+	* test_team/role_test.h:
+	* test_team/role_test.cpp:
+	* test_team/formation_test.h:
+	* test_team/formation_test.cpp:
+	* test_team/test_strategy.h:
+	* test_team/test_strategy.cpp:
+	* test_team/main_player.cpp:
+	add test team
+
+	* Makefile.am (SUBDIRS):
+	add test_team
+
+2004-04-15  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* generic_utils/logger.cpp:
+	* generic_utils/logger.cpp:
+	add new class & files.
+
+	* player_agent/player_agent.cc:
+	change see synchronization method (Beta).
+
+	* player_agent/action_effector.h:
+	add member variables of visual effector.
+
+	* player_agent/visual_effector.h:
+	* player_agent/visual_effector.cpp:
+	add new class & files to manage visual info.
+
+2004-04-13  Hidehisa Akiyama  <akky@users.sourceforge.jp>
+
+	* configure.ac:
+	create autotools settings.

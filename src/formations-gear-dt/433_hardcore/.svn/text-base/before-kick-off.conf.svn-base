@@ -1,0 +1,15 @@
+Formation Static
+# ---------------------------------------------------------
+# for BeforeKickOff or AfterGoal.
+ 1 Goalie -49.0   0.0
+ 2 HCCenterBack -25.0  -5.0
+ 3 HCCenterBack -25.0   5.0
+ 4 HCSideBack -24.0 -18.0
+ 5 HCSideBack -24.0  18.0
+ 6 HCDefensiveHalf -18.0   0.5
+ 7 HCOffensiveHalf -13.0 -11.0
+ 8 HCOffensiveHalf -13.0  11.0
+ 9 HCSideForward  -1.0 -27.0
+10 HCSideForward -1.0  27.0
+11 HCCenterForward -0.38 0.01
+# ---------------------------------------------------------

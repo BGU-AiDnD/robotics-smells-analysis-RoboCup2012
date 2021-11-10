@@ -1,0 +1,15 @@
+Formation Static
+# ---------------------------------------------------------
+# for BeforeKickOff or AfterGoal.
+ 1 Goalie        -49.0    0.0
+ 2 LCenterBack    -25.0   -5.0
+ 3 LCenterBack    -25.0    5.0
+ 4 LSideBack      -24.0  -18.0
+ 5 LSideBack      -24.0   18.0
+ 6 LOffensiveHalf -10.0    0.0
+ 7 LDefensiveHalf -15.0   -9.0
+ 8 LDefensiveHalf -15.0    9.0
+ 9 LOffensiveHalf       -3.0  -24.0
+10 LOffensiveHalf       -3.0   24.0
+11 LAttacker  -0.385  0.0
+# ---------------------------------------------------------

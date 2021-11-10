@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore
+END
+goalie-catch-opp.conf
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/goalie-catch-opp.conf
+END
+goalie-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/goalie-formation.conf
+END
+goal-kick-opp.conf
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/goal-kick-opp.conf
+END
+setplay-our-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/setplay-our-formation.conf
+END
+indirect-freekick-our-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/indirect-freekick-our-formation.conf
+END
+offense-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/offense-formation.conf
+END
+goalie-catch-our.conf
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/goalie-catch-our.conf
+END
+goal-kick-our.conf
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/goal-kick-our.conf
+END
+normal-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/normal-formation.conf
+END
+defense-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/defense-formation.conf
+END
+kickin-our-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/kickin-our-formation.conf
+END
+before-kick-off.conf
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/before-kick-off.conf
+END
+setplay-opp-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/setplay-opp-formation.conf
+END
+indirect-freekick-opp-formation.conf
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/warthog-2d/!svn/ver/67/trunk/RoboCup2012-BETA/src/formations-gear-dt/4231_hardcore/indirect-freekick-opp-formation.conf
+END
